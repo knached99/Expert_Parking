@@ -1,0 +1,137 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: None;
+  font-family: 'Josefin Sans', sans-serif;
+}
+body{
+  background-image: url(citySkyline.png)
+}
+.wrapper{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 350px;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 4px 4px 2px rgba(254, 236, 164, 1);
+
+}
+.wrapper .dropDown select{
+  font-weight: bolder;
+  background-color: blue;
+
+}
+::placeholder{
+  color: skyblue;
+  font-weight: thin;
+  font-size: 12px;
+}
+.wrapper h2{
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #332902;
+  background-color: lightgrey;
+  padding: 10px;
+}
+
+.wrapper select{
+  background-color: #050505;
+  color: #fff;
+
+}
+}
+.wrapper .input_field{
+  margin-bottom: 10px;
+  border-bottom-style: groove;
+  border-right-style: hidden;
+  border-top-style: hidden;
+  border-left-style: hidden;
+  padding-bottom: 30px;
+  padding-top: 30px;
+
+}
+.wrapper .input_field input[type = "text"], .wrapper textarea{
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+}
+
+.wrapper .input_field input[type ="tel"]{
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+}
+.wrapper textarea{
+  height: 80px;
+  resize: None;
+}
+
+.wrapper .btn button[type ="submit"]{
+  border: 0;
+  margin-top: 15px;
+  padding: 10px;
+  width: 100%;
+  background: #fece0c;
+  color: #332902;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight:bold;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.wrapper .btn button[type = "submit"]:hover{
+  background-color: #fe8b8e;
+  color: white;
+}
+
+
+ul {
+  float: left;
+  list-style-type: None;
+  margin-top: 25px;
+  font-weight: bolder;
+  color: white;
+}
+ul li{
+  display: inline-block;
+  color: white;
+  background-color: black;
+}
+
+ul li a{
+  text-decoration: None;
+  color: white;
+  padding: 5px 20px;
+  border: 1px solid transparent;
+  transition: 0.2s ease;
+
+
+}
+ul li a:hover{
+  background-color: #fff;
+  color: #000;
+}
+ul li.active a{
+  background-color: #fff;
+  color: #000;
+}
+
+#copyRight{
+  transform: translate(-165%, 1100%);
+  color: white;
+  font-weight: bolder;
+  font-style: italic;
+  font-size: 12px;
+
+}
+.wrapper .error span{
+  color: red;
+  visibility:hidden;
+}
