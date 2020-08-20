@@ -33,6 +33,7 @@ require('dbHandler.php');
     <input type="submit" name="signup_submit" value="Sign me up">
   </div>
 </form>
+
 <div class ="copyRight">
   &copy Copyright 2020 Expert Parking all rights reserved
 </div>
