@@ -68,9 +68,21 @@ body{
   border: 1px solid #e0e0e0;
   padding: 10px;
 }
-.wrapper textarea{
+.wrapper input[type="textarea"]{
   height: 80px;
+  width: 100%;
   resize: None;
+}
+
+.wrapper .input_field input[type="text"]:focus,
+input[type = "tel"]:focus, input[type ="email"]:focus
+{
+  color: red;
+  background-color: black;
+}
+.wrapper .input_field input[type = "textarea"]:focus{
+  color: lightgreen;
+  background-color: black;
 }
 
 .wrapper .btn button[type ="submit"]{
