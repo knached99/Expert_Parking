@@ -140,3 +140,14 @@ input[type="submit"]:active {
   font-style: italic;
   font-size: 12px;
 }
+.error{
+  color: red;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.success{
+  color: green;
+  font-size: 20px;
+  font-weight: bolder;
+}
