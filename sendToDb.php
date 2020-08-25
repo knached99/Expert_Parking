@@ -32,30 +32,30 @@ if(isset($_POST['signup_submit'])){ // isset() checks to see if the variable has
   //Validate user's email using PHP's built in function
   else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 
-    header('Location: signUp.php?error=invalidemail&fName='.$fName.'&lName='.$lName.'&phoneNum='.$phoneNum.'&vehMake='.$vehMake.'&vehModel='.$vehModel.'&vehYear='.$vehYear);
+    header('Location: signUp.php?error=invalidemail&fName='.$fName.'&lName='.$lName.'&phoneNum='.$phoneNum.'&vehMake='.$vehMake.'&vehModel='.$vehModel.'&vehYear='.$vehYear. '&vehLicense='.$vehLicense);
     exit();
   }
 
   else if(strlen((string)$vehYear)!=4){
 
-    header('Location: signUp.php?error=invalidYear&fName='.$fName.'&lName='.$lName.'&phoneNum='.$phoneNum.'&vehMake='.$vehMake.'&vehModel='.$vehModel);
+    header('Location: signUp.php?error=invalidYear&fName='.$fName.'&lName='.$lName.'&phoneNum='.$phoneNum.'&email='.$email.'&vehMake='.$vehMake.'&vehModel='.$vehModel.'&vehLicense='.$vehLicense);
     exit();
   }
   else if((strlen((string)$vehLicense) <7 ||strlen((string)$vehLicense) >8) && !preg_match("/([A-HJ-PR-Y]{2}([0][1-9]|[1-9][0-9])|[A-HJ-PR-Y]{1}([1-9]|[1-2][0-9]|30|31|33|40|44|55|50|60|66|70|77|80|88|90|99|111|121|123|222|321|333|444|555|666|777|888|999|100|200|300|400|500|600|700|800|900))[ ][A-HJ-PR-Z]{3}$/", (string)$vehLicense)){
 
-    header('Location: signUp.php?error=invalidLicense&fName='.$fName.'&lName='.$lName.'&phoneNum='.$phoneNum.'&vehMake='.$vehMake.'&vehModel='.$vehModel.'&vehLicense='.$vehLicense);
+    header('Location: signUp.php?error=invalidLicense&fName='.$fName.'&lName='.$lName.'&phoneNum='.$phoneNum.'&vehMake='.$vehMake.'&vehModel='.$vehModel.'&vehYear='.$vehYear.'&email='.$email);
 
     exit();
 
   }
   else if(strlen((string)$passWord) < 8){
 
-    header('Location: signUp.php?error=invalidPassword&fName='.$fName.'&lName='.$lName.'&phoneNum='.$phoneNum.'&vehMake='.$vehMake.'&vehModel='.$vehModel);
+    header('Location: signUp.php?error=invalidPassword&fName='.$fName.'&lName='.$lName.'&phoneNum='.$phoneNum.'&vehMake='.$vehMake.'&vehModel='.$vehModel.'&email='.$email.'&vehYear='.$vehYear.'&vehLicense='.$vehLicense);
     exit();
   }
   else if($passWord2 !==$passWord){
 
-    header('Location: signUp.php?error=passwordsdontmatch&fName='.$fName.'&lName='.$lName.'&phoneNum='.$phoneNum.'&vehMake='.$vehMake.'&vehModel='.$vehModel);
+    header('Location: signUp.php?error=passwordsdontmatch&fName='.$fName.'&lName='.$lName.'&phoneNum='.$phoneNum.'&vehMake='.$vehMake.'&vehModel='.$vehModel.'&email='.$email.'&vehYear='.$vehYear.'&vehLicense='.$vehLicense);
 
     exit();
   }
@@ -79,7 +79,7 @@ if(isset($_POST['signup_submit'])){ // isset() checks to see if the variable has
 
    if(!mysqli_stmt_prepare($preparedStmt, $sqlQuery) ) { // if we cannot prepare the SQL query for the specified DB connection then it fails
      // prepares query to connect to DB. If this connection fails
-     header('Location: signUp.php?error=sqlError&fName='.$fName.'&lName='.$lName.'&phoneNum='.$phoneNum.'&vehMake='.$vehMake.'&vehModel='.$vehModel);
+     header('Location: signUp.php?error=sqlError&fName='.$fName.'&lName='.$lName.'&phoneNum='.$phoneNum.'&vehMake='.$vehMake.'&vehModel='.$vehModel.'&email='.$email.'&vehYear='.$vehYear.'&vehLicense='.$vehLicense);
      exit();
    }
 
@@ -102,7 +102,7 @@ if(isset($_POST['signup_submit'])){ // isset() checks to see if the variable has
    }
    if($checkQueryResults > 0) // if there are more than 0 rows that have been returned. Send user back to sign up form
    {
-    header('Location: signUp.php?error=userExists&fName='.$fName.'&lName='.$lName.'&vehMake='.$vehMake.'&vehModel='.$vehModel);
+    header('Location: signUp.php?error=userExists&fName='.$fName.'&lName='.$lName.'&vehMake='.$vehMake.'&vehModel='.$vehModel.'&vehYear='.$vehYear);
     exit();
    }
    else{
@@ -112,7 +112,7 @@ if(isset($_POST['signup_submit'])){ // isset() checks to see if the variable has
      $preparedStmt = mysqli_stmt_init($connectToDb);
      // check to see if we can run this SQL statement in the DB
      if(!mysqli_stmt_prepare($preparedStmt, $sqlQuery)){ // prepares query to connect to DB. If this connection fails
-       header('Location: signUp.php?error=secondSqlError&fName='.$fName.'&lName='.$lName.'&phoneNum='.$phoneNum.'&vehMake='.$vehMake.'&vehModel='.$vehModel);
+       header('Location: signUp.php?error=secondSqlError&fName='.$fName.'&lName='.$lName.'&phoneNum='.$phoneNum.'&vehMake='.$vehMake.'&vehModel='.$vehModel.'&email='.$email.'&vehYear='.$vehYear.'&vehLicense='.$vehLicense);
        exit();
      }
      else{

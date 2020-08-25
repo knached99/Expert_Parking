@@ -23,8 +23,9 @@ require('validateContact.php');
       Get in touch with us!
     </h2>
     <form action='validateContact.php' method="post">
+
       <div class ="input_field">
-        <input type ="text" class="input" placeholder="Name" name ="name">
+        <input type ="text" class="input" placeholder="Type your full name" name ="name">
       </div>
       <div class ="=dropDown">
        <select class ="subjectDropDown" placeholder="choose a subject" name ="subject">
