@@ -44,10 +44,10 @@ require('dbHandler.php');
     }
     if(isset($_GET['phoneNum'])){
       $phoneNum = $_GET['phoneNum'];
-      echo '<input type = "tel" name ="phoneNum" placeholder="Phone number" value="'.$phoneNum.'">';
+      echo '<input type = "tel" name ="phoneNum" placeholder="Phone number (no dashes)" value="'.$phoneNum.'">';
     }
     else{
-      echo '<input type = "tel" name ="phoneNum" placeholder="Phone number">';
+      echo '<input type = "tel" name ="phoneNum" placeholder="Phone number no dashes">';
     }
     if(isset($_GET['password'])){
       $phoneNum = $_GET['password'];

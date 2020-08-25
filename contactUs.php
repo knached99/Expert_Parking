@@ -38,7 +38,7 @@ require('validateContact.php');
        </select>
       </div>
       <div class ="input_field">
-       <input type ="tel" class ="input" placeholder="Phone" name="phone">
+       <input type ="tel" class ="input" placeholder="Phone (no dashes)" name="phone">
       </div>
       <div class ="input_field">
       <input type ="text" class ="input" placeholder="Email"  name="email">

@@ -9,6 +9,7 @@ if(isset($_POST['signup_submit'])){ // isset() checks to see if the variable has
    // require produces a FATAL error if and stops the script
    // include only produces a warning and continues the script
 
+
   // Using $_POST method to collect form data after submission
   //POST is a little safer than GET because the parameters are not stored in browser history or in web server logs
   $email = $_POST['email'];
@@ -130,7 +131,7 @@ if(isset($_POST['signup_submit'])){ // isset() checks to see if the variable has
        // Now check to see if that user exists and
        mysqli_stmt_store_result($preparedStmt); // gets result from the DB and store it in the $prepared stmt variable
 
-       header("Location: signUp.php?signup=successnewuser");
+       header('Location: successPage.php?signup=successnewuser');
        exit();
        }
      }
@@ -141,6 +142,7 @@ if(isset($_POST['signup_submit'])){ // isset() checks to see if the variable has
 
   }
   exit();
+
 }
 
 ?>
