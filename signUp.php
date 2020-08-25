@@ -1,4 +1,5 @@
 <?php
+// requires the connection to the database
 require('dbHandler.php');
  ?>
 <!DOCTYPE HTML>
@@ -20,6 +21,7 @@ require('dbHandler.php');
 <div id="login-box">
   <div class="left">
     <h1>Vehicle Signup</h1>
+    <!-- instead of using HTML for the inputs, echo out in PHP-->
     <?php
     if(isset($_GET['fName'])){
       $fName = $_GET['fName'];

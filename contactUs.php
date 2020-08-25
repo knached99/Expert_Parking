@@ -23,10 +23,55 @@ require('validateContact.php');
       Get in touch with us!
     </h2>
     <form action='validateContact.php' method="post">
+        <?php
+        if(isset($_GET['name'])){
+          $name = $_GET['name'];
+          echo '<div class ="input_field">
+            <input type ="text" class="input" placeholder="Type your full name" name ="name" value ="'.$name.'">
+          </div>';
+        }
+        else{
+          echo '<div class ="input_field">
+            <input type ="text" class="input" placeholder="Type your full name" name ="name">
+          </div>';
+        }
+        if(isset($_GET['phone'])){
+          $phone = $_GET['phone'];
+          echo '<div class ="input_field">
+           <input type ="tel" class ="input" placeholder="Phone (no dashes)" name="phone" value="'.$phone.'">
+          </div>';
+        }
+        else{
+          echo '<div class ="input_field">
+           <input type ="tel" class ="input" placeholder="Phone (no dashes)" name="phone">
+          </div>';
+        }
+        if(isset($_GET['email'])){
+          $email = $_GET['email'];
+          echo '<div class ="input_field">
+          <input type ="text" class ="input" placeholder="Email"  name="email" value ="'.$email.'">
+          </div>';
+        }
+        else{
+          echo '<div class ="input_field">
+          <input type ="text" class ="input" placeholder="Email"  name="email">
+          </div>';
+        }
 
-      <div class ="input_field">
-        <input type ="text" class="input" placeholder="Type your full name" name ="name">
-      </div>
+        if(isset($_GET['message'])){
+          $message = $_GET['message'];
+          echo '<div class ="input_field">
+           <input type="textarea"  name = "message" class ="input" placeholder="Write your message here..."value="'.$message.'">
+          </div>';
+        }
+        else{
+        echo  '<div class ="input_field">
+           <input type="textarea"  name = "message" class ="input" placeholder="Write your message here...">
+          </div>';
+        }
+
+        ?>
+      
       <div class ="=dropDown">
        <select class ="subjectDropDown" placeholder="choose a subject" name ="subject">
         <option value ="0">None Selected</option>
@@ -37,15 +82,7 @@ require('validateContact.php');
         <option value ="5">Topic is not listed</option>
        </select>
       </div>
-      <div class ="input_field">
-       <input type ="tel" class ="input" placeholder="Phone (no dashes)" name="phone">
-      </div>
-      <div class ="input_field">
-      <input type ="text" class ="input" placeholder="Email"  name="email">
-      </div>
-      <div class ="input_field">
-       <input type="textarea"  name = "message" class ="input" placeholder="Write your message here...">
-      </div>
+
       <input type="submit" name ="submit" class ="btn" value="Send your message">
     </form>
   <div id ="copyRight">

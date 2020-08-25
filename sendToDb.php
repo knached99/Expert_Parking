@@ -66,7 +66,7 @@ if(isset($_POST['signup_submit'])){ // isset() checks to see if the variable has
 
     $connectToDb =  mysqli_connect($serverName, $user, $password, $dbName);
     if(!$connectToDb){
-      die("Connection failed".mysqli_connect_error());
+      die("Connection failed".mysqli_connect_error().mysqli_connect_errno());
 
       // mysqli_connect_errno throws out an error number
     }
@@ -76,8 +76,10 @@ if(isset($_POST['signup_submit'])){ // isset() checks to see if the variable has
    $sqlQuery = 'SELECT email, phoneNum FROM newUsers WHERE email = ? or phoneNum =?';
    // Create a prepared statement to run the query
 //prepared statement prepare the query to pass through the DB connection
+// initialize the prepare statement to the DB
    $preparedStmt = mysqli_stmt_init($connectToDb);
 
+// mysqli_stmt_prepare() takes two arguments, first is the prepared statement, second is the DB query
    if(!mysqli_stmt_prepare($preparedStmt, $sqlQuery) ) { // if we cannot prepare the SQL query for the specified DB connection then it fails
      // prepares query to connect to DB. If this connection fails
      header('Location: signUp.php?error=sqlError&fName='.$fName.'&lName='.$lName.'&phoneNum='.$phoneNum.'&vehMake='.$vehMake.'&vehModel='.$vehModel.'&email='.$email.'&vehYear='.$vehYear.'&vehLicense='.$vehLicense);
@@ -87,8 +89,11 @@ if(isset($_POST['signup_submit'])){ // isset() checks to see if the variable has
    // For Testing, comment out when implementing the rest
    //header("Location: signUp.php?signup=success");
    //exit();
-//mysqli_stmt_prepare() executes SQL statements repeatedelt with high efficeincy
+//mysqli_stmt_prepare() executes SQL statements repeatedely with high efficeincy
    else{
+     // mysqli_stmt_bind_param() takes multiple arguments, first is the prepared statement
+     //second are the characters which indicate what kind of variable the elements we want to bind are
+     // next are all the elements we need to bind
      mysqli_stmt_bind_param($preparedStmt, "si", $email, $phoneNum); // fills in the parameters in the sql query with the arguments
      // 's' stands for string, 'i' stands for integer, 'D' for double
 
@@ -107,7 +112,7 @@ if(isset($_POST['signup_submit'])){ // isset() checks to see if the variable has
     exit();
    }
    else{
-
+     // Otherwise if everything was successful
      // now sign up the user into the DB
      $sqlQuery = "INSERT INTO newUsers (firstName, lastName, email, phoneNum, vehMake, vehModel, vehYear, vehLicense, passWord) VALUES(?,?,?,?,?,?,?,?,?)";
      $preparedStmt = mysqli_stmt_init($connectToDb);
@@ -135,10 +140,14 @@ if(isset($_POST['signup_submit'])){ // isset() checks to see if the variable has
        exit();
        }
      }
-    // check to see if we can prepare the SQL statment with our SQL connection
-    // close off the SQL statement and SQL connection
-    mysqli_stmt_close($preparedStmt);
-    mysqli_close($connectToDb);
+
+
+    mysqli_stmt_close($preparedStmt); // Closes a prepared statement. mysqli_stmt_close()
+    //also deallocates the statement handle.
+    //If the current statement has pending or unread results,
+    //this function cancels them so that the next query can be executed.
+
+    mysqli_close($connectToDb);     // close off the SQL statement and SQL connection
 
   }
   exit();
