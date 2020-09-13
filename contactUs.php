@@ -113,6 +113,7 @@ require('validateContact.php');
 
       <input type="submit" name ="submit" class ="btn" value="Send your message">
     </form>
+    </div>
   <div id ="copyRight">
     &copy Copyright 2020 Expert Parking all rights reserved
   </div>
