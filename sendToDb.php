@@ -136,7 +136,7 @@ if(isset($_POST['signup_submit'])){ // isset() checks to see if the variable has
        // Now check to see if that user exists and
        mysqli_stmt_store_result($preparedStmt); // gets result from the DB and store it in the $prepared stmt variable
 
-       header('Location: successPage.php?signup=successnewuser');
+       header('Location: signUp.php?signup=successnewuser');
        exit();
        }
      }

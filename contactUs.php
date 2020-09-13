@@ -24,6 +24,7 @@ require('validateContact.php');
     </h2>
     <form action='validateContact.php' method="post">
         <?php
+
         if(isset($_GET['name'])){
           $name = $_GET['name'];
           echo '<div class ="input_field">
@@ -57,6 +58,7 @@ require('validateContact.php');
           <input type ="text" class ="input" placeholder="Email"  name="email">
           </div>';
         }
+
         ?>
         <div class ="=dropDown">
          <select class ="subjectDropDown" placeholder="choose a subject" name ="subject">
@@ -80,7 +82,10 @@ require('validateContact.php');
            <input type="textarea"  name = "message" class ="input" placeholder="Write your message here...">
           </div>';
         }
-
+        //Write the mail script here
+        $mailTo = "Khalednached@gmail.com";
+        $headers = "From: ".$email;
+        $message = "You've recieved an email from: " .$name."\n\n".$message;
         ?>
         <?php
           // Use the URL and GET method to display errors in the webpage
