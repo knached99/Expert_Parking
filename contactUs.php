@@ -57,7 +57,18 @@ require('validateContact.php');
           <input type ="text" class ="input" placeholder="Email"  name="email">
           </div>';
         }
-
+        ?>
+        <div class ="=dropDown">
+         <select class ="subjectDropDown" placeholder="choose a subject" name ="subject">
+          <option value ="0">None Selected</option>
+          <option value ="1">Customer Service</option>
+          <option value ="2">Technical Support</option>
+          <option value ="3">Cancel My Monthly Subscription</option>
+          <option value ="4">Cancel My Semesterly Subscription</option>
+          <option value ="5">Topic is not listed</option>
+         </select>
+        </div>
+        <?php
         if(isset($_GET['message'])){
           $message = $_GET['message'];
           echo '<div class ="input_field">
@@ -71,17 +82,29 @@ require('validateContact.php');
         }
 
         ?>
-      
-      <div class ="=dropDown">
-       <select class ="subjectDropDown" placeholder="choose a subject" name ="subject">
-        <option value ="0">None Selected</option>
-        <option value ="1">Customer Service</option>
-        <option value ="2">Technical Support</option>
-        <option value ="3">Cancel My Monthly Subscription</option>
-        <option value ="4">Cancel My Semesterly Subscription</option>
-        <option value ="5">Topic is not listed</option>
-       </select>
-      </div>
+        <?php
+          // Use the URL and GET method to display errors in the webpage
+
+            $websiteUrl = "http://$_SERVER[HTTP_POST]$_SERVER[REQUEST_URI]";
+            if(strpos($websiteUrl, "error=emptyfields&name")==true){
+              echo "<p class ='error'>All fields are required!</p>";
+            }
+            else if(strpos($websiteUrl,"error=invalidemail&name")==true){
+              echo "<p class='error'>Email is invalid!</p>";
+            }
+            else if(strpos($websiteUrl, "error=invalidPhoneNum&name")==true){
+              echo "<p class ='error'>Phone number is invalid!</p>";
+            }
+            else if(strpos($websiteUrl, "error=messageIsTooShort&name")==true){
+              echo "<p class='error'>Message must be at least 100 characters long</p>";
+            }
+            else if(strpos($websiteUrl,"error=noSubjectSelected&name")==true){
+              echo "<p class='error'>Must select a subject!</p>";
+            }
+            else if(strpos($websiteUrl, "success=messageSent")==true){
+              echo "<p class='success'>Your message was sent and is currently being reviewed by an admin.<br> We will contact you shortly!</p>";
+            }
+            ?>
 
       <input type="submit" name ="submit" class ="btn" value="Send your message">
     </form>

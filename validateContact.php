@@ -2,23 +2,8 @@
 if(isset($_POST['submit'])){
 
 
-/*  require_once('vendor/autoload.php');
-  $mail = new PHPMailer();
-  $mail -> isSMTP();
-  $mail -> SMTPAuth = True;
-  $mail -> STMPSecure = 'ssl';
-  $mail ->HOST ='stmtp.gmail.com';
-  $mail ->Port ='465';
-  $mail ->isHTML();
-  $mail ->Username = 'ExpertParkingLLC@gmail.com';
-  $mail ->Password ='ExpertParking99!';
-  $mail ->setFrom('no-reply@ExpertParking.com');
-  $mail ->Subject = 'Thank you for contacting us';
-  $mail ->Body = 'Hi,'.$name.'Thank you for reaching out to us. Your message is currently being reviewed. We will contact you shortly.';
-  $mail->AddAddress($email);
-  $mail->Send();
+// Write the auotmated mail script here
 
-*/
 
     // GET THE FORM DATA USING THE $_POST METHOD
   $name = $_POST['name'];
@@ -44,7 +29,7 @@ header('Location: contactUs.php?error=invalidemail&name='.$name.'&subject='.$sub
     header('Location: contactUs.php?error=invalidPhoneNum&name='.$name.'&email='.$email.'&subject='.$subject.'&message='.$message);
   }
   else if(strlen((string)$message)<100){
-    header('Location: contactUs.php?error=messageIsTooShort&name='.$name.'&email='.$email.'&subject='.$subject);
+    header('Location: contactUs.php?error=messageIsTooShort&name='.$name.'&email='.$email.'&phoneNum='.$phoneNum.'&subject='.$subject);
     exit();
   }
   else if($subject =='0'){
