@@ -85,7 +85,7 @@ input[type = "tel"]:focus, input[type ="email"]:focus
   background-color: black;
 }
 
-.wrapper .btn button[type ="submit"]{
+.wrapper .btn input[type ="submit"]{
   border: 0;
   margin-top: 15px;
   padding: 10px;
@@ -98,7 +98,7 @@ input[type = "tel"]:focus, input[type ="email"]:focus
   border-radius: 25px;
   cursor: pointer;
 }
-.wrapper .btn button[type = "submit"]:hover{
+.wrapper .btn input[type = "submit"]:hover{
   background-color: #fe8b8e;
   color: white;
 }
