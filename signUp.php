@@ -130,7 +130,9 @@ require('dbHandler.php');
 
   }
 ?>
-
+<div class="loginRedirect">
+  Already a member? <a href="login.php">Login Here</a>
+</div>
 <div class ="copyRight">
   &copy Copyright 2020 Expert Parking all rights reserved
 </div>
