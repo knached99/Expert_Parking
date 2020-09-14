@@ -161,12 +161,17 @@ body{
 
 .loginRedirect{
   color: #0fd1a7;
+  
 
 }
-a{
+.loginRedirect a{
   color: red;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-a:hover{
+.loginRedirect a:hover{
   color: purple;
+  text-decoration: none;
+  font-weight: bolder;
 }
