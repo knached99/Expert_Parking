@@ -49,7 +49,7 @@ require('dbHandler.php');
       echo '<input type = "tel" name ="phoneNum" placeholder="Phone number (no dashes)" value="'.$phoneNum.'">';
     }
     else{
-      echo '<input type = "tel" name ="phoneNum" placeholder="Phone number no dashes">';
+      echo '<input type = "tel" name ="phoneNum" placeholder="Phone number (no dashes) ">';
     }
     if(isset($_GET['password'])){
       $phoneNum = $_GET['password'];
@@ -99,7 +99,10 @@ require('dbHandler.php');
 
 
 
-    <input type="submit" name="signup_submit" value="Sign me up">
+    <input type="submit" name="signup_submit" value="Sign me up"><br><br>
+    <div class="loginRedirect">
+      Already a member? <a href="login.php">Login Here</a>
+    </div>
   </div>
 </form>
 <?php
@@ -130,9 +133,7 @@ require('dbHandler.php');
 
   }
 ?>
-<div class="loginRedirect">
-  Already a member? <a href="login.php">Login Here</a>
-</div>
+
 <div class ="copyRight">
   &copy Copyright 2020 Expert Parking all rights reserved
 </div>

@@ -24,7 +24,9 @@ require('validateContact.php');
     </h2>
     <form action='validateContact.php' method="post">
         <?php
-
+        //$error = array('name'=>'', 'email'=>'','phoneNum'=>'','subject'=>'','message'=>'');
+        // So that was the ERROR variable which holds an array of the values with the default set to NULL
+        // so watch what i did .
         if(isset($_GET['name'])){
           $name = $_GET['name'];
           echo '<div class ="input_field">
@@ -32,6 +34,7 @@ require('validateContact.php');
           </div>';
         }
         else{
+          echo '<div class="error"></div>'
           echo '<div class ="input_field">
             <input type ="text" class="input" placeholder="Type your full name" name ="name">
           </div>';
@@ -110,6 +113,9 @@ require('validateContact.php');
               echo "<p class='success'>Your message was sent and is currently being reviewed by an admin.<br> We will contact you shortly!</p>";
             }
             ?>
+
+            //ok so basically instead of echoing out the error i want to create a div class
+            // but when i did the page doesnt render in the brwoser. its just blank.
 
       <input type="submit" name ="submit" class ="btn" value="Send your message">
     </form>
