@@ -1,3 +1,6 @@
+<?php
+require('dbHandler.php');
+?>
 <!DOCTYPE html>
 <html lang ="en">
 <head>
@@ -16,22 +19,62 @@
       <li><a href = "signUp.php">Sign Up</a></li>
     <div class ="formWrapper">
       <h1>
-      Member Login
+      User Login
       </h1>
-      <form id ="lognPage" onsubmit="return validateLogin()">
-        <div class ="inputField">
-          <input type ="text" placeholder="username" id ="userName">
-        </div>
-        <div class ="inputField">
-          <input type ="password" placeholder="password" id ="passWord">
-        </div>
+      <form id ="lognPage" action="validateLogin.php" method ="POST">
+        <?php
+        if(isset($_GET['email'])){
+          $email = $_GET['email'];
+          echo '<div class ="inputField">
+            <input type ="text" placeholder="email" name ="Email" value="'.$email'">
+          </div> ';
+        }
+        else{
+          echo '<div class ="inputField">
+            <input type ="text" placeholder="email" name ="Email">
+          </div> ';
+        }
+        if(isset($_GET['passWord']))
+        {
+          echo '  <div class ="inputField">
+              <input type ="password" placeholder="password" name ="PassWord" value="'.$passWord'">
+            </div>';
+        }
+      else{
+        echo '  <div class ="inputField">
+            <input type ="password" placeholder="password" name ="PassWord">
+          </div>';
+      }
+      ?>
         <div class ="submitButton">
-          <input type ="submit" value ="Login">
+          <input type ="submit" value ="Login" name='login'>
         </div>
         <div id ="forgotLogin">
-        Forgot Password?<a href ="forgotLogin.html" id="hrefStyle"> Click Here </a> // have a way to recover that password. 
+        Forgot Password?<a href ="forgotLogin.php" id="hrefStyle"> Click Here </a> // have a way to recover that password.
         </div>
+
       </form>
+      <?php
+      // echo out errors based on URL
+      $websiteUrl = "http://$_SERVER[HTTP_POST]$_SERVER[REQUEST_URI]";
+      if(strpos($websiteUrl, "error=emptyfields&email")==true)
+      {
+        echo '<p class ="error">All fields are required!</p>';
+      }
+      else if(strpos($websiteUrl, "error=invalidemail")==true)
+      {
+        echo '<p clas="error">Email is invalid</p>';
+      }
+      else if(strpos($websiteUrl, "error=wrongPassword")==true)
+      {
+        echo '<p class="error">Password is incorrect</p>';
+      }
+      else if(strpos($websiteUrl, "error=noUser"))
+      {
+        echo '<p class="error">User does not exist</p>';
+      }
+
+      ?>
     </div>
     </body>
 </html>
