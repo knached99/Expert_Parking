@@ -1,7 +1,6 @@
 <?php
 require('dbHandler.php');
 ?>
-<!DOCTYPE html>
 <html lang ="en">
 <head>
   <meta charset = "utf-8">
@@ -22,7 +21,7 @@ require('dbHandler.php');
       <h1>
       User Login
       </h1>
-      <form id ="lognPage" action="validateLogin.php" method ="POST">
+      <form action="validateLogin.php" method ="POST">
         <?php
         if(isset($_GET['email'])){
           $email = $_GET['email'];
@@ -37,12 +36,12 @@ require('dbHandler.php');
         }
         if(isset($_GET['passWord']))
         {
-          echo '  <div class ="inputField">
+          echo '<div class ="inputField">
               <input type ="password" placeholder="password" name ="PassWord" value="'.$passWord'">
             </div>';
         }
       else{
-        echo '  <div class ="inputField">
+        echo '<div class ="inputField">
             <input type ="password" placeholder="password" name ="PassWord">
           </div>';
       }
@@ -55,27 +54,27 @@ require('dbHandler.php');
         </div>
 
 
-      <?php
-      // echo out errors based on URL
-      $websiteUrl = "http://$_SERVER[HTTP_POST]$_SERVER[REQUEST_URI]";
-      if(strpos($websiteUrl, "error=emptyfields&email")==true)
-      {
-        echo '<p class ="error">All fields are required!</p>';
-      }
-      else if(strpos($websiteUrl, "error=invalidemail")==true)
-      {
-        echo '<p class="error">Email is invalid</p>';
-      }
-      else if(strpos($websiteUrl, "error=wrongPassword")==true)
-      {
-        echo '<p class="error">Password is incorrect</p>';
-      }
-      else if(strpos($websiteUrl, "error=noUser"))
-      {
-        echo '<p class="error">User does not exist</p>';
-      }
+              <?php
+              // echo out errors based on URL
+              $websiteUrl = "http://$_SERVER[HTTP_POST]$_SERVER[REQUEST_URI]";
+              if(strpos($websiteUrl, "error=emptyfields&email")==true)
+              {
+                echo '<p class ="error">All fields are required!</p>';
+              }
+              else if(strpos($websiteUrl, "error=invalidemail")==true)
+              {
+                echo '<p class="error">Email is invalid</p>';
+              }
+              else if(strpos($websiteUrl, "error=wrongPassword")==true)
+              {
+                echo '<p class="error">Password is incorrect</p>';
+              }
+              else if(strpos($websiteUrl, "error=noUser"))
+              {
+                echo '<p class="error">User does not exist</p>';
+              }
 
-      ?>
+              ?>
     </div>
   </form>
     </body>
