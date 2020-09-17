@@ -13,12 +13,14 @@ include('sendToDb.php');
 <?php
 if(isset($_SESSION['userId']))
 {
-  echo '<p class="loginStatus">Hi ""'.$name'"", welcome to your dashboard</p>';
+  echo '<p class="loginStatus">Hi ""'.$name'"", welcome to your dashboard<br><br>Today is"'.date("l")'"</p>';
 
 }
 else{
   echo '<p class="loginStatus">You are now logged out</p>';
 }
+
 ?>
+&copy Copyright Expert Parking <?php echo date("Y");?> all rights reserved
 </body>
 </html>

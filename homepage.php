@@ -72,7 +72,8 @@ session_start();
                 </p>
 
                 <div id ="copyRight">
-                &copy Copyright Expert Parking 2020 all rights reserved
+                &copy Copyright Expert Parking <?php echo date("Y");?> all rights reserved
+
               </div>
 
 

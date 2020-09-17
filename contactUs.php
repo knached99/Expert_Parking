@@ -116,7 +116,8 @@ require('validateContact.php');
     </form>
     </div>
   <div id ="copyRight">
-    &copy Copyright 2020 Expert Parking all rights reserved
+    &copy Copyright Expert Parking <?php echo date("Y");?> all rights reserved
+
   </div>
 
 </body>
