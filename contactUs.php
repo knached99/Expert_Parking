@@ -16,6 +16,7 @@ require('validateContact.php');
         <li><a href = "homepage.php">Home</a></li>
         <li class ="active"><a href = "contactUs.php">Contact Us</a></li>
         <li><a href = "signUp.php">Sign Up</a></li>
+        <li><a href ="login.php">Login</a></li>
       </ul>
   </header>
   <div class = "wrapper">
