@@ -124,3 +124,10 @@ body{
   color: red;
   text-decoration: none;
 }
+.error{
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+  border: 1px solid red;
+
+}

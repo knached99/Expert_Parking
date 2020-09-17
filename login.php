@@ -17,6 +17,7 @@ require('dbHandler.php');
       <li><a href = "homepage.php">Home</a><i class ="fa fa-fw fa-home"></li>
       <li><a href = "contactUs.php">Contact Us</a><i class ="fa fa-fw-envelope"</li>
       <li><a href = "signUp.php">Sign Up</a></li>
+    </ul>
     <div class ="formWrapper">
       <h1>
       User Login
@@ -53,7 +54,7 @@ require('dbHandler.php');
         Forgot Password?<a href ="forgotLogin.php" id="hrefStyle"> Click Here </a> // have a way to recover that password.
         </div>
 
-      </form>
+
       <?php
       // echo out errors based on URL
       $websiteUrl = "http://$_SERVER[HTTP_POST]$_SERVER[REQUEST_URI]";
@@ -63,7 +64,7 @@ require('dbHandler.php');
       }
       else if(strpos($websiteUrl, "error=invalidemail")==true)
       {
-        echo '<p clas="error">Email is invalid</p>';
+        echo '<p class="error">Email is invalid</p>';
       }
       else if(strpos($websiteUrl, "error=wrongPassword")==true)
       {
@@ -76,5 +77,6 @@ require('dbHandler.php');
 
       ?>
     </div>
+  </form>
     </body>
 </html>
