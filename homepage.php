@@ -20,7 +20,7 @@ session_start();
         <li class = "active"><a href = "homepage.php">Home</a><i class ="fa fa-fw fa-home"></li>
         <li><a href = "contactUs.php">Contact Us</a><i class ="fa fa-fw-envelope"</li>
         <li><a href = "signUp.php">Sign Up</a></li>
-        <li><a href="login.ph">Login</a></li>
+        <li><a href="login.php">Login</a></li>
       </ul>
       <div id ="homepageText">
         Expert Parking
