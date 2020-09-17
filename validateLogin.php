@@ -64,8 +64,8 @@ else{
     // START A SESSION by using $_SESSION global variable
     session_start();
     //create a session variable for the user's ID and email
-    $_SESSION[]= $row['userId'];
-    $_SESSION[] = $row['email'];
+    $_SESSION[]= $rows['userId'];
+    $_SESSION[] = $rows['email'];
     header('Location: userDashboard.php?success=loggedin');
     exit();
     }
