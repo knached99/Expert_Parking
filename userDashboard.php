@@ -13,7 +13,7 @@ include('sendToDb.php');
 <?php
 if(isset($_SESSION['userId']))
 {
-  echo '<p class="loginStatus">Hi ""'.$name'"", welcome to your dashboard<br><br>Today is"'.date("l")'"</p>';
+  echo '<p class="loginStatus">Hi ""'.$name.'"", welcome to your dashboard<br><br>Today is"'.date("l")'"</p>';
 
 }
 else{

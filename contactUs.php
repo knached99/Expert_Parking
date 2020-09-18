@@ -1,5 +1,6 @@
 <?php
 require('validateContact.php');
+session_start();
 ?>
 <!DOCTYPE HTML>
 <html lang ="en">

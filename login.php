@@ -1,5 +1,6 @@
 <?php
 require('dbHandler.php');
+session_start();
 ?>
 <html lang ="en">
 <head>
@@ -26,23 +27,23 @@ require('dbHandler.php');
         if(isset($_GET['email'])){
           $email = $_GET['email'];
           echo '<div class ="inputField">
-            <input type ="text" placeholder="email" name ="Email" value="'.$email'">
+            <input type ="text" placeholder="email" name ="email" value="'.$email.'">
           </div> ';
         }
         else{
           echo '<div class ="inputField">
-            <input type ="text" placeholder="email" name ="Email">
+            <input type ="text" placeholder="email" name ="email">
           </div> ';
         }
         if(isset($_GET['passWord']))
         {
           echo '<div class ="inputField">
-              <input type ="password" placeholder="password" name ="PassWord" value="'.$passWord'">
+              <input type ="password" placeholder="password" name ="passWord" value="'.$passWord.'">
             </div>';
         }
       else{
         echo '<div class ="inputField">
-            <input type ="password" placeholder="password" name ="PassWord">
+            <input type ="password" placeholder="password" name ="passWord">
           </div>';
       }
       ?>
@@ -57,13 +58,9 @@ require('dbHandler.php');
               <?php
               // echo out errors based on URL
               $websiteUrl = "http://$_SERVER[HTTP_POST]$_SERVER[REQUEST_URI]";
-              if(strpos($websiteUrl, "error=emptyfields&email")==true)
+              if(strpos($websiteUrl, "error=emptyfields")==true)
               {
                 echo '<p class ="error">All fields are required!</p>';
-              }
-              else if(strpos($websiteUrl, "error=invalidemail")==true)
-              {
-                echo '<p class="error">Email is invalid</p>';
               }
               else if(strpos($websiteUrl, "error=wrongPassword")==true)
               {
