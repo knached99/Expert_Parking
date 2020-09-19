@@ -56,17 +56,17 @@ session_start();
 
 
               <?php
-              // echo out errors based on URL
+              // Based on string position in the URL, display the errors on the webpage
               $websiteUrl = "http://$_SERVER[HTTP_POST]$_SERVER[REQUEST_URI]";
               if(strpos($websiteUrl, "error=emptyfields")==true)
               {
                 echo '<p class ="error">All fields are required!</p>';
               }
-              else if(strpos($websiteUrl, "error=wrongPassword")==true)
+              else if(strpos($websiteUrl, "error=wrongpassword")==true)
               {
                 echo '<p class="error">Password is incorrect</p>';
               }
-              else if(strpos($websiteUrl, "error=noUser"))
+              else if(strpos($websiteUrl, "error=nouser"))
               {
                 echo '<p class="error">User does not exist</p>';
               }
