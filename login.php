@@ -66,11 +66,17 @@ session_start();
               {
                 echo '<p class="error">Password is incorrect</p>';
               }
-              else if(strpos($websiteUrl, "error=nouser"))
+              else if(strpos($websiteUrl, "error=nouser")==true)
               {
                 echo '<p class="error">User does not exist</p>';
               }
-
+              else if(strpos($websiteUrl, "error=invalidemail")==true)
+              {
+                echo '<p class="error">Please enter a valid email</p>';
+              }
+              else if(strpos($websiteUrl, "error=invalidpassword")==true){
+                echo '<p class="error">An invalid password was specified</p>';
+              }
               ?>
     </div>
   </form>

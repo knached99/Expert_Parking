@@ -1,88 +1,74 @@
 <?php
-if(isset($_POST['login']))
-{
+if(isset($_POST['login'])){
   require('dbHandler.php');
 
-   //grab the POST data using the $_POST global variable
+  // Grab POST DATA
   $email = $_POST['email'];
   $passWord = $_POST['passWord'];
-
-  // check if the values are empty
-  if(empty($email)||empty($passWord))
-  {
+  if(empty($email)||empty($passWord)){
     header('Location: login.php?error=emptyfields');
     exit();
   }
-
-  else {
-
-    // construct the SQL Query
-    $query = 'SELECT * FROM newUsers WHERE email=? AND passWord=?;';
-
-    // initialize the prepared statement and pass DB connection as argument
-    $preparedStmt = mysqli_stmt_init($connectToDb);
-
-    // if it does not prepare the statement,
-
-    if(!mysqli_stmt_prepare($preparedStmt, $query)){
-      header('Location: login.php?error=sqlError');
+  // validate the email
+  else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    header('Location: login.php?error=invalidemail');
+    exit();
+  }
+  // validate the password is the correct length
+  else if(strlen(string)$passWord <8)
+  {
+    header('Location: login.php?error=invalidpassword&email='.$email.'');
+    exit();
+  }
+  else{
+    // if everything is all good
+    $connectToDb = mysqli_connect($serverName, $user, $password, $dbname);
+    if(!$connectToDb){
+      die("Connection failed".mysqli_connect_errno().mysqli_connect_error());
+    }
+    $query = 'SELECT email, passWord FROM newUsers WHERE email=? AND passWord=?';
+    // initialize the prepared statement
+    $stmtPrepared = mysqli_stmt_init($connectToDb);
+    if(!mysqli_stmt_prepare($stmtPrepared, $query)){
+      header('Location: login.php?error=sqlError')
       exit();
     }
-    else{
-      // grab the data we got from the select statement
-      // bind param takes 3 arguments, prepared statement, datatype of data, and data
-      mysqli_stmt_bind_param($preparedStmt, "ss", $email, $passWord);
-      // once parameters have been binded, execute the prepared statement
-      mysqli_stmt_execute($preparedStmt);
-      // get the results of the prepared statement
-      $results = mysqli_get_result($preparedStmt);
-      // check if there were any results
-      // use mysqli_fetch_assoc() <-- pass in row variable to get results as
-      // associative array
-
-      if($row = mysqli_fetch_assoc($results))
-      {
-        // grab pwd from user, take it from DB, hash it and see if it matches
-        // to see if the pwds match, use the password_verify()
-        // two parameters, password that user tried to put and password from DB
-        $pwdCheck = password_verify($passWord, $row['passWord']);
-        // use true or false to check if pwed check is true or false
-
-        if($pwdCheck == false){
-          header('Location: login.php?error=wrongpassword');
-          exit();
-        }
-
-
-        else if($pwdCheck == true){
-          // to login user,
-          // use the global variable $_SESSION
-          // Start the session
-          session_start();
-          // set session variables equal to information we have about user inside the DB
-          $_SESSION['userId']=$row['userId'];
-          $_SESSION['email']=$row['email'];
-
-          header('Location userDashboard.php?success=userloggedin');
-          exit();
-        }
-        else{
-          header('Location: login.php?error=wrongpassword');
-          exit();
-        }
-
+    // If the Prepared statement was successful
+    // bind the parameters
+    mysqli_stmt_bind_param($stmtPrepared, 'ss', $email, $passWord);
+    // execute the prepared statement
+    mysqli_stmt_execute($stmtPrepared);
+    // store the results in the prepared statment variable
+    $results = mysqli_get_result($stmtPrepared);
+    if($row = mysqli_fetch_assoc($results))
+    {
+      $checkPassword = password_verify($passWord, $row['passWord']);
+      if($checkPassword == FALSE){
+        header('Location: login.php?error=wrongpassword&email='.$email'');
+        exit();
+      }
+      else if($checkPassword == TRUE){
+        // if pwd is matched against the one in the DB, then start the session
+        session_start();
+        $_SESSION['passWord']=$row['passWord'];
+        $_SESSION['email']=$row['email'];
+        // redirect the user to their dashboard
+        header('Location: userDashboard.php?success=userloggedin');
+        exit();
       }
       else{
-        header('Location: login.php?error=nouser');
+        header('Location: login.php?error=wrongpassword&email='.$email'');
         exit();
       }
     }
-
+    else{
+      header('Location: login.php?error=nouser');
+      exit();
+    }
   }
-
 }
 else{
-  header('Location: signUp.php');
+  header('Location: homepage.php');
   exit();
 }
 ?>
