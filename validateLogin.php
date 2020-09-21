@@ -44,7 +44,7 @@ if(isset($_POST['login'])){
     {
       $checkPassword = password_verify($passWord, $row['passWord']);
       if($checkPassword == FALSE){
-        header('Location: login.php?error=wrongpassword&email='.$email'');
+        header('Location: login.php?error=wrongpassword&email='.$email.'');
         exit();
       }
       else if($checkPassword == TRUE){
@@ -57,7 +57,7 @@ if(isset($_POST['login'])){
         exit();
       }
       else{
-        header('Location: login.php?error=wrongpassword&email='.$email'');
+        header('Location: login.php?error=wrongpassword&email='.$email.'');
         exit();
       }
     }
