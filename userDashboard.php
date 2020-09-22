@@ -1,5 +1,6 @@
 <?php
-include('sendToDb.php');
+session_start();
+include_once('login.php');
 ?>
 <!DOCTYPE HTML>
 <html lang = "en">
@@ -11,13 +12,13 @@ include('sendToDb.php');
 </head>
 <body>
 <?php
-if(isset($_SESSION['userId']))
+if(isset($_SESSION['email']))
 {
   echo '<p class="loginStatus">Hi ""'.$name.'"", welcome to your dashboard<br><br>Today is"'.date("l")'"</p>';
 
 }
 else{
-  echo '<p class="loginStatus">You are now logged out</p>';
+  echo '<p class="loginStatus">Bye, ""'.$name'"", see you again!</p>';
 }
 
 ?>

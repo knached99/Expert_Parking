@@ -1,4 +1,4 @@
-<?php
+ <?php
 if(isset($_POST['signup_submit'])){ // isset() checks to see if the variable has been set.
   // in this case if the submit button has been clicked
 
