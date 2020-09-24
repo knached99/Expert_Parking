@@ -9,7 +9,7 @@ session_unset();
 session_destroy();
 
 // take user back to front page
-header('Location: homepage.php');
+header('Location: login.php');
 
 
 ?>

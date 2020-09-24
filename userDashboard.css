@@ -1,0 +1,41 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+ul {
+  float: left;
+  list-style-type: None;
+  margin-top: 25px;
+  font-weight: bolder;
+  color: white;
+}
+ul li{
+  display: inline-block;
+  color: white;
+  background-color: black;
+}
+
+ul li a{
+  text-decoration: None;
+  color: white;
+  padding: 5px 20px;
+  border: 1px solid transparent;
+  transition: 0.2s ease;
+
+
+}
+ul li a:hover{
+  background-color: #eb3434;
+  color: #fff;
+  text-decoration: none;
+}
+
+.loggedIn{
+  font-size: 15px;
+  font-weight: bolder;
+  font-family: Georgia;
+  color: #000;
+  position: relative;
+  top: 20px;
+  left: 380px;
+}
