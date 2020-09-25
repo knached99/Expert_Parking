@@ -9,7 +9,21 @@ session_unset();
 session_destroy();
 
 // take user back to front page
-header('Location: login.php');
+header('Location: homepage.php');
+
+
 
 
 ?>
+
+<html>
+<head>
+  <link rel ="stylesheet" type="text/css" href="logout.css">
+</head>
+<body>
+
+    <h1>You have been successfully logged out!</h1> <br><br>
+
+  <p>Click here to go back to the login page <a href="login.php"></a></p>
+</body>
+</html>

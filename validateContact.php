@@ -11,6 +11,8 @@ if(isset($_POST['submit'])){
   $phone = $_POST['phone'];
   $email = $_POST['email'];
   $message =$_POST['message'];
+  // phone number length
+  $phoneNumLength = strlen((string)$phoneNum <10);
   //$mailTo = "khalednached@gmail.com"; // won't work in local server
 
   // if fields are empty send user back to the form
@@ -25,7 +27,7 @@ if(isset($_POST['submit'])){
 header('Location: contactUs.php?error=invalidemail&name='.$name.'&subject='.$subject.'&phone='.$phone.'&message='.$message);
     exit();
   }
-  else if(preg_match('/^(\+1|001)?\(?([0-9]{3})\)?([ .-]?)([0-9]{3})([ .-]?)([0-9]{4})/',$phoneNum)){
+  else if(preg_match('/^(\+1|001)?\(?([0-9]{3})\)?([ .-]?)([0-9]{3})([ .-]?)([0-9]{4})/',$phoneNum) && $phoneNum !=$phoneNumLength){
     header('Location: contactUs.php?error=invalidPhoneNum&name='.$name.'&email='.$email.'&subject='.$subject.'&message='.$message);
   }
   else if(strlen((string)$message)<100){
