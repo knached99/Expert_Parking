@@ -51,7 +51,7 @@ session_start();
           <input type ="submit" value ="Login" name='login'>
         </div>
         <div id ="forgotLogin">
-        Forgot Password?<a href ="forgotLogin.php" id="hrefStyle"> Click Here </a> // have a way to recover that password.
+        Forgot Password?<a href ="forgotLogin.php" id="hrefStyle"> Click Here </a> <!--have a way to recover that password. -->
         </div>
 
 
@@ -76,6 +76,9 @@ session_start();
               }
               else if(strpos($websiteUrl, "error=invalidpassword")==true){
                 echo '<p class="error">An invalid password was specified</p>';
+              }
+              else if(strpos($websiteUrl, "message=loggedout")==true){
+                echo '<p class="success">You have been successfully logged out!</p>';
               }
               ?>
     </div>

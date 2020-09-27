@@ -43,7 +43,7 @@ ul li a:hover{
 table {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  width: 640px;
+  width: 50%;
   /* Table reset stuff */
   border-collapse: collapse; border-spacing: 0;
 }
@@ -82,4 +82,12 @@ tr:first-child th:nth-child(2) {
 
 tr:first-child th:last-child {
   border-radius: 0 5px 0 0;
-} 
+}
+
+h{
+  color: red;
+  font-size: 25px;
+  text-align: center;
+  font-weight: bolder;
+  font-family: Trebuchet;
+}

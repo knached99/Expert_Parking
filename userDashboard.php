@@ -15,54 +15,64 @@ require('dbHandler.php');
 </head>
 <body>
   <?php
-  $query = 'SELECT * FROM newUsers where fName, lName, email, phoneNum, vehMake, vehModel, vehYear, vehLicense';
-  $results = mysqli_query($connectToDb, $query);
   if(isset($_SESSION['email'])){
 
     echo '
     <ul>
-    <li> <a href="logout.php">Logout</a></li>
+    <li><a href="logout.php">Log out</a></li>
     </ul>
     ';
     echo '<h class="loggedIn">Welcome to your dashboard!</h>';
     // Display user data from the database
-    echo '<div class="userData">
-    <table>
-    <tr>
-    User information
-    <th>Name</th>
-    <th>Email</th>
-    <th>Phone number</th>
-    </tr>
-    <tr>
-    <td>"'.$results['fName']['lName'].'"</td>
-    <td>"'.$results['email'].'"</td>
-    <td>"'.$results['phoneNum'].'"</td>
-    </tr>
-    </table>
-    </div>';
-    echo '<div class="vehicleData">
-    <table>
-    <tr>
-    Vehicle Information
-    <th>Make</th>
-    <th>Model</th>
-    <th>Year</th>
-    <th>License Plate</th>
-    </tr>
-    <tr>
-    <td>"'.$results['vehMake'].'"</td>
-    <td>"'.$results['vehModel'].'" </td>
-    <td> "'.$results['vehYear'].'"</td>
-    <td>"'.$results['vehLicense'].'"</td>
-    </tr>
-    </table>
-    </div>';
+
   }
     else{
       echo '<h class = "loggedOut">You are logged out. You may return to the home screen</h>';
     }
+    ?>
+  <?php
+  $query = 'SELECT firstName, lastName, email, phoneNum, vehMake, vehModel, vehYear, vehLicense FROM newUsers where email="'.$_SESSION['email'].'"';
+  $results = mysqli_query($connectToDb, $query);
+  if(mysqli_num_rows($results)>0){
+    if($row = mysqli_fetch_assoc($results)){
+      echo '<table>
+          <caption>My Information</caption>
+          <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone number</th>
+      </tr>
+      <td>'.$row['firstName'].'</td>
+      <td>'.$row['lastName'].'</td>
+      <td>'.$row['email'].'</td>
+      <td>'.$row['phoneNum'].'</td>
+        </table>
+        <br><br>
+        <table>
+        <caption>
+        My Vehicle Information
+        </caption>
+        <tr>
+        <th>Vehicle Make</th>
+        <th>Vehicle Model</th>
+        <th>Vehicle Year</th>
+        <th>Vehicle License</th></tr>
+        <td>'.$row['vehMake'].'</td>
+        <td>'.$row['vehModel'].'</td>
+        <td>'.$row['vehYear'].'</td>
+        <td>'.$row['vehLicense'].'</td>
+        </tr>
+      </table>';
+    }
+  }
+  else{
+    echo '<h class ="error">No data</h>';
+  }
+
 
   ?>
+  </table>
+
 </body>
 </html>

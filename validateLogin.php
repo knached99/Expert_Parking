@@ -41,6 +41,9 @@ if(isset($_POST['login'])){
           exit();
         }
         else if($checkPwd == true){
+          // CHECK IF THE USER'S NAME IS ALSO IN ADMIN TABLE.
+
+          // IF IT IS THEN GO TO ADMIN PAGE, OTHERWISE START SESSION AS CUSTOMER USER 
           session_start(); // start a session to remember the user on the SERVER
           $_SESSION['email']=$row['email'];
           header('Location: userDashboard.php?success=userLoggedin');
