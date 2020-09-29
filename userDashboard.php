@@ -1,7 +1,7 @@
 <?php
 // start the session to remember the user
 session_start();
-date_default_timezone_set("America/New_York");
+ date_default_timezone_set("America/New_York");
 require('dbHandler.php');
 
 ?>
@@ -35,34 +35,47 @@ require('dbHandler.php');
   $results = mysqli_query($connectToDb, $query);
   if(mysqli_num_rows($results)>0){
     if($row = mysqli_fetch_assoc($results)){
-      echo '<table>
+      echo '<table class="content-table">
+      <thead>
           <caption>My Information</caption>
           <tr>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
         <th>Phone number</th>
+        </thead>
       </tr>
+      <tbody>
+      <tr>
       <td>'.$row['firstName'].'</td>
       <td>'.$row['lastName'].'</td>
       <td>'.$row['email'].'</td>
       <td>'.$row['phoneNum'].'</td>
+      </tbody>
+      </tr>
         </table>
         <br><br>
-        <table>
+        <table class="content-table">
+        <tr>
         <caption>
         My Vehicle Information
         </caption>
+        <thead>
+        </tr>
+        <tbody>
         <tr>
         <th>Vehicle Make</th>
         <th>Vehicle Model</th>
         <th>Vehicle Year</th>
         <th>Vehicle License</th></tr>
+        </thead>
         <td>'.$row['vehMake'].'</td>
         <td>'.$row['vehModel'].'</td>
         <td>'.$row['vehYear'].'</td>
         <td>'.$row['vehLicense'].'</td>
+        </tbody>
         </tr>
+
       </table>';
     }
   }
