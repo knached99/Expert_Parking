@@ -12,13 +12,14 @@
   transform: translate(-50%, -50%);
   max-width: 350px;
   width: 100%;
-  background: white;
+  background-color: #000;
   color: white;
   padding: 25px;
   border-radius: 5px;
   box-shadow: 4px 4px 2px 2px black;
   border-left: 6px solid black;
   border-top: 6px solid black;
+  opacity: 0.8;
 }
 
 .formWrapper h1{
@@ -26,10 +27,12 @@
   font-size: 15px;
   font-family: trebuchet;
   text-align: center;
+  font-style: normal;
   margin-bottom: 20px;
   color: black;
   text-transform: uppercase;
   letter-spacing: 3px;
+  color: #fff;
 
 }
 .formWrapper .inputField{
@@ -39,21 +42,28 @@
 
 .formWrapper .inputField input[type ="text"]{
   width: 100%;
-  border: 1px solid black;
+  border: 1px solid #fff;
   padding: 10px;
   font-weight: bold;
-  color: black;
+  color: lightblue;
+  background-color: #fff;
   border-radius: 50px;
+  outline: none;
+  text-decoration: none;
 }
 .formWrapper .inputField input[type ="password"]{
   width: 100%;
-  border: 1px solid black;
+  border: 1px solid #fff;
   padding: 10px;
   border-radius: 50px;
+  outline: none;
+  color: lightblue;
+  background-color: #fff;
+  text-decoration: none;
 }
 
 ::placeholder{
-  color: black;
+  color: lightblue;
   font-weight: bold;
 }
 .formWrapper .submitButton input[type ="submit"]{
@@ -61,20 +71,30 @@
   margin-top: 15px;
   padding: 10px;
   width: 100%;
-  background: black;
-  color: white;
+  background-color: #fff;;
+  color: #000;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 5px;
   font-weight:bold;
   border-radius: 25px;
   cursor: pointer;
+  border: 1px solid white;
 }
-.formWrapper .inputField input[type="text"]:focus, input[type="password"]:focus{
-  background-color: none;
-  color: #a14dfa;
+.formWrapper .inputField input[type="text"]:focus{
+  background-color: #000;
+  color:  #4d79ff;
   font-weight: bold;
   font-family: Georgia;
+  border: 2px solid green;
+
+}
+.formWrapper .inputField input[type="password"]:focus{
+  background-color: #000;
+  color:  #4d79ff;
+  font-weight: bold;
+  font-family: Georgia;
+  border: 2px solid green;
 }
 
 ul {
@@ -86,56 +106,72 @@ ul {
 }
 ul li{
   display: inline-block;
-  color: white;
-  background-color: black;
+  color: #fff;
+
 }
 
 ul li a{
   text-decoration: None;
-  color: white;
+  color: #fff;
   padding: 5px 20px;
   border: 1px solid transparent;
   transition: 0.2s ease;
+  text-decoration: none;
 
 
 }
 ul li a:hover{
-  background-color: #fff;
-  color: #000;
+  border-bottom: 4px solid #fff;
+  color: #fff;
+  text-decoration: none;
 }
 ul li.active a{
-  background-color: #fff;
-  color: #000;
+  background-color: #000;
+  color: #fff;
 }
 .formWrapper .submitButton input[type="submit"]:hover{
-  background-color: red;
-  color: white;
+
+      background-color:#000;
+            color: #3b2a2a;
+            font-weight: bolder;
+            opacity: none;
+  color: #fff;
 }
 body{
-  background-image: url(cityLife.jpg);
-  background-repeat: repeat-x;
+  background-image: url(darkMountain.jpg);
+  background-repeat: no-repeat;
 }
 
 #forgotLogin{
-  color: black;
+  color: #fff;
   font-size: 13px;
   margin: 20px;
+  font-weight: bold;
+
 
 }
 #hrefStyle{
   text-decoration: none;
+  font-weight: bold;
+}
+#forgotLogin a{
+  color: lightgreen;
+  font-weight: 600;
 }
 
 #forgotLogin a:hover{
   color: red;
   text-decoration: none;
+  font-weight: 600;
+
 }
 .error{
   color: #fff;
   font-size: 20px;
-  font-weight: bolder;
-  border: 0.25px solid red;
-  background-color: #cc0000;
+  font-weight: 650;
+  border: 0.25px solid #ff3d47;
+  background-color: #ff3d47;
+  opacity: 1.5;
 
 }
 .success{
@@ -144,4 +180,15 @@ body{
   font-weight: bolder;
   border: 1px solid black;
   background-color:green;
+  opacity: none;
+}
+.copyRight{
+  position: relative;
+  top: 700px;
+  left: 20%;
+  color: #fff;
+  font-weight: 650;
+  font-style: italic;
+  font-size: 12px;
+
 }

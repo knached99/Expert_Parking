@@ -12,11 +12,13 @@ if(isset($_POST['submit'])){
   $email = $_POST['email'];
   $message =$_POST['message'];
   // phone number length
-  $phoneNumLength = strlen((string)$phoneNum <10);
   //$mailTo = "khalednached@gmail.com"; // won't work in local server
+  $phoneNumLength = strlen((string)$phoneNum!=10);
+
+  $noChars = preg_replace("/[^0-9]/",'',$phoneNum);
 
   // if fields are empty send user back to the form
-  if(empty($name) || empty($phone) || empty($email) || empty($message))
+  if(empty($name) && empty($phone) && empty($email) && empty($message))
   {
     header('Location: contactUs.php?error=emptyfields&name='.$name.'&subject='.$subject.'&phone='.$phone.'&email='.$email.'&message='.$message);
     exit();
@@ -27,7 +29,7 @@ if(isset($_POST['submit'])){
 header('Location: contactUs.php?error=invalidemail&name='.$name.'&subject='.$subject.'&phone='.$phone.'&message='.$message);
     exit();
   }
-  else if(preg_match('/^(\+1|001)?\(?([0-9]{3})\)?([ .-]?)([0-9]{3})([ .-]?)([0-9]{4})/',$phoneNum) && $phoneNum !=$phoneNumLength){
+  else if(!preg_match('/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/', $_POST['phoneNum']) && !$phoneNumLength){
     header('Location: contactUs.php?error=invalidPhoneNum&name='.$name.'&email='.$email.'&subject='.$subject.'&message='.$message);
   }
   else if(strlen((string)$message)<100){
@@ -43,6 +45,9 @@ header('Location: contactUs.php?error=invalidemail&name='.$name.'&subject='.$sub
     exit(); // exit() function stops script from running if there is an error.
   }
 
+}
+else{
+  pass;
 }
 
 

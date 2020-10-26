@@ -12,25 +12,31 @@ ul {
 ul li{
   display: inline-block;
   color: white;
-  background-color: black;
+  font-weight: 600;
 }
 
 ul li a{
   text-decoration: None;
-  color: white;
+  border-bottom: #fff;
+  color: #fff;
   padding: 5px 20px;
   border: 1px solid transparent;
   transition: 0.2s ease;
 
 
 }
+::placeholder{
+  font-weight: 500;
+  font-size: 14px;
+  color: gray;
+}
 ul li a:hover{
-  background-color: #fff;
-  color: #000;
+  border-bottom: 4px solid #7300ff;
+  color: #fff;
 }
 ul li.active a{
-  background-color: #fff;
-  color: #000;
+  border-bottom: 4px solid #008cff;
+  color: #fff;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
@@ -52,11 +58,11 @@ body {
   position: relative;
   margin: 5% auto;
   width: 600px;
-  height: 730px;
-  background: #FFF;
+  height: 600px;
+  background: #000;
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  opacity: 0.9;
+  opacity: 0.8;
 
 }
 
@@ -75,6 +81,12 @@ h1 {
   margin: 0 0 20px 0;
   font-weight: 300;
   font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  align-items: center;
+  text-align: center;
+  align-content: center;
+
 }
 
 input[type="text"],
@@ -90,28 +102,38 @@ input[type ="email"]
   width: 220px;
   height: 32px;
   border: none;
+  border-radius: 4px;
   border-bottom: 1px solid #AAA;
+  border-top: 1px solid #AAA;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 15px;
   transition: 0.2s ease;
+
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="number"]:focus,
-input[type="email"]:focus
+input[type="email"]:focus,
+input[type="tel"]:focus
  {
-  border-bottom: 2px solid #16a085;
-  color: #16a085;
+  border-bottom: 2px solid #36c6ff;
+  border-top: 2px solid #36c6ff;
+  border-left: 2px solid #36c6ff;
+  border-right: 2px solid #36c6ff;
+  color: #f0ff19;
+  font-weight: 650;
+  width: 560px;
   transition: 0.2s ease;
+  background-color: #000;
 }
 
 input[type="submit"] {
   margin-top: 28px;
   width: 120px;
   height: 32px;
-  background: darkgreen;
+  background-color: #25f53a;
   border: none;
   border-radius: 2px;
   color: white;
@@ -127,6 +149,9 @@ input[type="submit"]:focus {
   opacity: 0.8;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: 0.1s ease;
+  color: #fff;
+  font-weight: 650;
+
 }
 
 input[type="submit"]:active {
@@ -137,17 +162,18 @@ input[type="submit"]:active {
 
 .copyRight{
   transform: translate(50%, 80%);
-  color: white;
-  font-weight: bolder;
+  color: #fff;
+  font-weight: 600;
   font-style: italic;
   font-size: 12px;
 }
 .error{
   color: white;
   font-size: 20px;
-  font-weight: bolder;
-  border: 1px solid red;
-  background-color:red;
+  font-weight: 650;
+  border: 1px solid #ff3d47;
+  background-color:#ff3d47;
+
 }
 
 .success{
@@ -158,22 +184,26 @@ input[type="submit"]:active {
   background-color:green;
 }
 body{
-  background-image: url("citySky.jpg");
+  background-image: url("galaxyJeep.jpg");
 }
 
 .loginRedirect{
-  color: #0fd1a7;
-
+  color: #61f4ff;
+  font-size: 15px;
+  font-weight:550;
 
 }
 .loginRedirect a{
   color: red;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: bolder;
+  font-size: 15px;
 }
 
 .loginRedirect a:hover{
-  color: purple;
+  color: #6fff00;
+  background-color: none;
   text-decoration: none;
-  font-weight: bolder;
+  font-weight: bold;
+  font-size: 15px;
 }

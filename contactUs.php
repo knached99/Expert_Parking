@@ -113,13 +113,14 @@ session_start();
             }
             ?>
 
-      <input type="submit" name ="submit" class ="btn" value="Send your message">
+      <input type="submit" name ="submit" class ="btn" value="Send your message"><br><br>
+      <div id ="copyRight">
+        &copy Copyright Expert Parking <?php echo date("Y");?> all rights reserved
+        
+      </div>
     </form>
     </div>
-  <div id ="copyRight">
-    &copy Copyright Expert Parking <?php echo date("Y");?> all rights reserved
 
-  </div>
 
 </body>
 </html>

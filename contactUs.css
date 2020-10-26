@@ -33,12 +33,15 @@ body{
 }
 .wrapper h2{
   text-align: center;
+
   margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 3px;
   color: #332902;
-  background-color: lightgrey;
+  background-image: linear-gradient(#00c6ff, #0072ff );
   padding: 10px;
+  font-weight: 600;
+  color: #fff;
 }
 
 .wrapper select{
@@ -77,33 +80,34 @@ body{
 .wrapper .input_field input[type="text"]:focus,
 input[type = "tel"]:focus, input[type ="email"]:focus
 {
-  color: red;
+  color: #34e5eb;
   background-color: black;
+  font-weight: 650;
 }
 .wrapper .input_field input[type = "textarea"]:focus{
-  color: lightgreen;
+  color: #03cdff;
   background-color: black;
+  font-weight: 400;
+  font-size: 15px;
 }
 
-.wrapper .btn input[type ="submit"]{
+.wrapper .btn {
   border: 0;
   margin-top: 15px;
   padding: 10px;
   width: 100%;
-  background: #000;
-  color: #fff;
+  background-color: #4287f5;
+  color: #e6d8d8;
   text-transform: uppercase;
   letter-spacing: 5px;
   font-weight:bold;
   border-radius: 25px;
   cursor: pointer;
 }
-.wrapper .btn input[type = "submit"]:hover{
-  background-color: #42daf5;
+.wrapper .btn:hover{
+    background-image: linear-gradient(#606c88, #3f4c6b);
   color: #fff;
 }
-
-
 ul {
   float: left;
   list-style-type: None;
@@ -114,7 +118,7 @@ ul {
 ul li{
   display: inline-block;
   color: white;
-  background-color: black;
+
 }
 
 ul li a{
@@ -127,28 +131,31 @@ ul li a{
 
 }
 ul li a:hover{
-  background-color: #fff;
-  color: #000;
+  border-bottom: 4px solid #ff4747;
+  color: #fff;
+  text-decoration: none;
 }
 ul li.active a{
-  background-color: #fff;
-  color: #000;
+  border-bottom: 4px solid #33ff66;
+  color: #fff;
 }
 
 #copyRight{
-  transform: translate(-165%, 1100%);
-  color: white;
-  font-weight: bolder;
-  font-style: italic;
-  font-size: 12px;
+  transform: translate(-0.1%, 100%);
+  color: #000;
+  font-weight: 650;
+  font-style: normal;
+  font-size: 10px;
+  font-family: Georgia;
+
 
 }
 .error{
-  color: white;
+  color: #fff;
   font-size: 20px;
   font-weight: bolder;
-  border: 1px solid red;
-  background-color:red;
+  border: 1px solid #ff3d47;
+  background-image: linear-gradient(#f00000, #dc281e);
 
 }
 
@@ -157,5 +164,5 @@ ul li.active a{
   font-size: 20px;
   font-weight: bolder;
   border: 1px solid black;
-  background-color:green;
+    background-image: linear-gradient(#4568dc, #B06AB3);
 }

@@ -3,7 +3,7 @@
 require('dbHandler.php');
  ?>
 <!DOCTYPE HTML>
-<html lang = "en">
+<html lang = "en" dir="ltr">
 <head>
 <title>www.ExpertParking.com/signUp.php?</title>
 <link rel = "stylesheet" type = "text/css" href ="signUp.css">
@@ -16,11 +16,11 @@ require('dbHandler.php');
     <li class = "active"><a href = "signUp.php">Sign Up</a></li>
   </ul>
 </header>
-<form action = "sendToDb.php" method="post">
+<form action = "validateSignup.php" method="post">
 
 <div id="login-box">
   <div class="left">
-    <h1>Vehicle Signup</h1>
+    <h1>User Signup</h1>
     <!-- instead of using HTML for the inputs, echo out in PHP-->
     <?php
     if(isset($_GET['fName'])){
@@ -36,6 +36,13 @@ require('dbHandler.php');
     }
     else{
       echo '<input type ="text" name = "lName" placeholder="Last Name">';
+    }
+    if(isset($_GET['username'])){
+      $username = $_GET['username'];
+      echo '<input type ="text" name="username" placeholder="Username" value="'.$username.'">';
+    }
+    else{
+      echo '<input type="text" name="username" placeholder="Username">';
     }
     if(isset($_GET['email'])){
       $email = $_GET['email'];
@@ -65,34 +72,6 @@ require('dbHandler.php');
     else{
       echo '<input type="password" name="password2" placeholder="Retype password">';
     }
-    if(isset($_GET['vehMake'])){
-      $vehMake = $_GET['vehMake'];
-      echo '<input type = "text" name = "vehMake" placeholder="Vehicle Make" value="'.$vehMake.'">';
-    }
-    else{
-      echo '<input type = "text" name = "vehMake" placeholder="Vehicle Make">';
-    }
-    if(isset($_GET['vehModel'])){
-      $vehModel =  $_GET['vehModel'];
-      echo '<input type = "text" name = "vehModel" placeholder="Vehicle Model" value="'.$vehModel.'">';
-    }
-    else{
-      echo '<input type = "text" name = "vehModel" placeholder="Vehicle Model">';
-    }
-    if(isset($_GET['vehYear'])){
-      $vehYear = $_GET['vehYear'];
-      echo '<input type ="number" name = "vehYear" placeholder="Vehicle Year" value="'.$vehYear.'">';
-    }
-    else{
-      echo '<input type ="number" name = "vehYear" placeholder="Vehicle Year">';
-    }
-    if(isset($_GET['vehLicense'])){
-      $vehLicense = $_GET['vehLicense'];
-      echo '<input type = "text" name = "vehLicense" placeholder="License Plate" value="'.$vehLicense.'">';
-    }
-    else{
-      echo '<input type = "text" name = "vehLicense" placeholder="License Plate">';
-    }
 
     ?>
 
@@ -104,6 +83,7 @@ require('dbHandler.php');
       Already a member? <a href="login.php">Login Here</a>
     </div>
   </div>
+
 </form>
 <?php
   $websiteUrl = "http://$_SERVER[HTTP_POST]$_SERVER[REQUEST_URI]";
@@ -113,19 +93,13 @@ require('dbHandler.php');
   else if(strpos($websiteUrl, "error=invalidemail&fName")==true){
     echo "<p class = 'error'>Email is invalid</p>";
   }
-  else if(strpos($websiteUrl, "error=invalidYear&fName")==true){
-    echo "<p class ='error'>Year must be 4 digits long</p>";
-  }
-  else if(strpos($websiteUrl, "error=invalidLicense&fName")==true){
-    echo "<p class ='error'>License is invalid</p>";
-  }
   else if(strpos($websiteUrl, "error=invalidPassword&fName")){
     echo "<p class = 'error'>Password must be at least 8 characters long</p>";
   }
   else if(strpos($websiteUrl, "error=passwordsdontmatch&fName")==true){
     echo "<p class ='error'>Passwords must match</p>";
   }
-  else if(strpos($websiteUrl,"error=userExists&fName")==true){
+  else if(strpos($websiteUrl,"error=userExists")==true){
     echo "<p class ='error'>User already exists</p>";
   }
   else if(strpos($websiteUrl, "signup=successnewuser")==true){

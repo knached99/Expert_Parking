@@ -1,0 +1,10 @@
+.headerSection h2{
+  font-weight: 650;
+  font-family: Georgia;
+  font-size: 20px;
+  text-align: center;
+  text-shadow: 2px 2px lightblue;
+  width: auto;
+  text-decoration: none;
+
+}

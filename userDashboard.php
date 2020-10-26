@@ -1,91 +1,62 @@
 <?php
 // start the session to remember the user
+
 session_start();
  date_default_timezone_set("America/New_York");
 require('dbHandler.php');
+//$query = 'SELECT * FROM newUsers WHERE email="'.$_SESSION['email'].'"';
+//if(isset($_SESSION['email'])){
+  //echo '<h1>Welcome Back<sup><img src="sillyEmoji.png"</sup></h1>';
+//}
+if(isset($_SESSION['email'])){
+//echo '<h2>Welcome back!</h2>';
+}
+else{
+  echo '<h1>You are logged out!</h1>';
+  echo '<p>Return to the login page</p>';
+  session_unset();
+  session_destroy();
+  header('login.php');
+  exit();
 
+}
 ?>
-<html lang = "en">
+<html lang  ="en" dir="ltr">
 <head>
-<meta charset = "utf-8">
-<meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-<link rel = 'stylesheet' type="text/css" href='dashBoard.css'>
-<link rel="stylesheet" type="text/css" href="userDashboard.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<title>User Dashboard</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel ="stylesheet" type="text/css" href="userDashboard.css">
+<link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  <?php
-  if(isset($_SESSION['email'])){
+  <input type="checkbox" id ="check";>
+<header>
+  <label for ="check">
+  <i class ="fas fa-bars" id="sidebar_btn"></i>
+  </label>
+<div class ="leftArea">
+  <h3>My<span>Dashboard</span></h3>
+</div>
+<div class ="rightArea">
+<a href = "logout.php" class="logoutBtn">Logout</a>
+</div>
 
-    echo '
-    <ul>
-    <li><a href="logout.php">Log out</a></li>
-    </ul>
-    ';
-    echo '<h class="loggedIn">Welcome to your dashboard!</h>';
-    // Display user data from the database
+</header>
+<div class = "sideBar">
+<center>
+  <img src ="myPic2.jpg"class ="profile_pic" alt ="" name="profilePic">
+  <h4><?php echo $row['firstName'];?></h4>
+</center>
+<a href = "#"><i class ="fas-fa-desktop"></i><span>Dashboard</span></a>
+<a href = "userProfile.php"><i class ="fas-fa-cogs"></i><span>My Profile</span></a>
+<a href = "userBilling.php"><i class ="fas-fa-table"></i><span>My Billing</span></a>
+<a href = "userSettings.php"><i class ="fas-fa-sliders-h"></i><span>My Settings</span></a>
 
-  }
-    else{
-      echo '<h class = "loggedOut">You are logged out. You may return to the home screen</h>';
-    }
-    ?>
-  <?php
-  $query = 'SELECT firstName, lastName, email, phoneNum, vehMake, vehModel, vehYear, vehLicense FROM newUsers where email="'.$_SESSION['email'].'"';
-  $results = mysqli_query($connectToDb, $query);
-  if(mysqli_num_rows($results)>0){
-    if($row = mysqli_fetch_assoc($results)){
-      echo '<table class="content-table">
-      <thead>
-          <caption>My Information</caption>
-          <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Phone number</th>
-        </thead>
-      </tr>
-      <tbody>
-      <tr>
-      <td>'.$row['firstName'].'</td>
-      <td>'.$row['lastName'].'</td>
-      <td>'.$row['email'].'</td>
-      <td>'.$row['phoneNum'].'</td>
-      </tbody>
-      </tr>
-        </table>
-        <br><br>
-        <table class="content-table">
-        <tr>
-        <caption>
-        My Vehicle Information
-        </caption>
-        <thead>
-        </tr>
-        <tbody>
-        <tr>
-        <th>Vehicle Make</th>
-        <th>Vehicle Model</th>
-        <th>Vehicle Year</th>
-        <th>Vehicle License</th></tr>
-        </thead>
-        <td>'.$row['vehMake'].'</td>
-        <td>'.$row['vehModel'].'</td>
-        <td>'.$row['vehYear'].'</td>
-        <td>'.$row['vehLicense'].'</td>
-        </tbody>
-        </tr>
+</div>
+<div class ="content">
 
-      </table>';
-    }
-  }
-  else{
-    echo '<h class ="error">No data</h>';
-  }
-
-
-  ?>
-  </table>
-
+</div>
 </body>
 </html>
