@@ -52,7 +52,7 @@ session_start();
               <div class="col-lg-3 col-md-6">
                 <div class="card">
                   <div class="card-body">
-                    <img src="myPic.jpg" alt="Founder and CEO" class="img-fluid rounded-circle w-50 mb-3">
+                    <img src="elonMusk.jpg" alt="Founder and CEO" class="img-fluid rounded-circle w-50 mb-3">
                     <h3>Mike</h3>
                     <h5>Founder and CEO</h5>
                     <p>Mike is the founder and CEO of Expert Parking</p>

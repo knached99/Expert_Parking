@@ -55,8 +55,8 @@ if(isset($_POST['signup_submit'])){ // isset() checks to see if the variable has
 
     $connectToDb =  mysqli_connect($serverName, $user, $password, $dbName);
     if(!$connectToDb){
-      die("Connection failed".mysqli_connect_error().mysqli_connect_errno());
-
+      die("Unable to establish connection to server".mysqli_connect_error().mysqli_connect_errno());
+      
       // mysqli_connect_errno throws out an error number
     }
    // Check if there is an existing user under this profile. Check for first and last name

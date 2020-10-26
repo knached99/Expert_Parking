@@ -140,8 +140,10 @@ ul li.active a{
   margin-top: -50px;
 }
 #ourTeam p{
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
+  color: #000;
+
 }
 #ourTeam h3{
   font-weight: 700;
@@ -174,7 +176,7 @@ ul li.active a{
 }
 
 #ourTeam{
-  background-color: black;
+  background-image: linear-gradient(#757F9A, #D7DDE8);
   color: #fff;
   height: 100vh;
 }
