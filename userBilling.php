@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('dbHandler.php');
+require('backendLogic/dbHandler.php');
 ?>
 
 
@@ -8,16 +8,19 @@ require('dbHandler.php');
 <head>
   <meta charset = "utf-8">
   <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-<link rel ="stylesheet" type="text/css" href="billing.css">
+<link rel ="stylesheet" type="text/css" href="styling/billing.css">
 
 </head>
 
 <body>
+  <ul>
+    <li><a href="userDashboard.php">Go Back</a></li>
+  </ul>
   <div class="headerSection">
     <div class ="headerSection">
 
       <h2>
-      Payment due on 10/31/2020
+      Payment due on 12/31/2020
 </h2>
     </div>
   </div>
@@ -25,6 +28,6 @@ require('dbHandler.php');
 
 </div>
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-  <script src ="billing.js"></script>
+  <script src ="jsFiles/billing.js"></script>
 </body>
 </html>

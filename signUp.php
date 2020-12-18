@@ -1,12 +1,14 @@
 <?php
 // requires the connection to the database
-require('dbHandler.php');
+require('backendLogic/dbHandler.php');
  ?>
 <!DOCTYPE HTML>
 <html lang = "en" dir="ltr">
 <head>
 <title>www.ExpertParking.com/signUp.php?</title>
-<link rel = "stylesheet" type = "text/css" href ="signUp.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<link rel = "stylesheet" type = "text/css" href ="styling/signUp.css">
 </head>
 <body>
   <header>
@@ -16,7 +18,7 @@ require('dbHandler.php');
     <li class = "active"><a href = "signUp.php">Sign Up</a></li>
   </ul>
 </header>
-<form action = "validateSignup.php" method="post">
+<form action = "backendLogic/validateSignup.php" method="post">
 
 <div id="login-box">
   <div class="left">

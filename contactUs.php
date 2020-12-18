@@ -1,11 +1,14 @@
 <?php
-require('validateContact.php');
+require('backendLogic/validateContact.php');
+require('backendLogic/dbHandler.php');
 session_start();
 ?>
 <!DOCTYPE HTML>
 <html lang ="en">
 <head>
-  <link rel ="stylesheet" type ="text/css" href ="contactUs.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel ="stylesheet" type ="text/css" href ="styling/contactUs.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <meta charset = "utf-8">
   <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
@@ -24,7 +27,7 @@ session_start();
     <h2>
       Get in touch with us!
     </h2>
-    <form action='validateContact.php' method="post">
+    <form action='backendLogic/validateContact.php' method="post">
         <?php
 
         if(isset($_GET['name'])){
@@ -65,11 +68,9 @@ session_start();
         <div class ="=dropDown">
          <select class ="subjectDropDown" placeholder="choose a subject" name ="subject">
           <option value ="0">None Selected</option>
-          <option value ="1">Customer Service</option>
-          <option value ="2">Technical Support</option>
-          <option value ="3">Cancel My Monthly Subscription</option>
-          <option value ="4">Cancel My Semesterly Subscription</option>
-          <option value ="5">Topic is not listed</option>
+          <option value ="1">General Questions</option>
+          <option value ="2">Bug Report</option>
+          <option value ="3">Questions about rates</option>
          </select>
         </div>
         <?php
@@ -84,39 +85,39 @@ session_start();
            <input type="textarea"  name = "message" class ="input" placeholder="Write your message here...">
           </div>';
         }
-        //Write the mail script here
-        $mailTo = "Khalednached@gmail.com";
-        $headers = "From: ".$email;
-        $message = "You've recieved an email from: " .$name."\n\n".$message;
+        //Write the SMS script here
+
+
+
         ?>
         <?php
           // Use the URL and GET method to display errors in the webpage
 
             $websiteUrl = "http://$_SERVER[HTTP_POST]$_SERVER[REQUEST_URI]";
             if(strpos($websiteUrl, "error=emptyfields&name")==true){
-              echo "<p class ='error'>All fields are required!</p>";
+              echo "<p class ='alert alert-danger'>All fields are required!</p>";
             }
             else if(strpos($websiteUrl,"error=invalidemail&name")==true){
-              echo "<p class='error'>Email is invalid!</p>";
+              echo "<p class='alert alert-danger'>Email is invalid!</p>";
             }
             else if(strpos($websiteUrl, "error=invalidPhoneNum&name")==true){
-              echo "<p class ='error'>Phone number is invalid!</p>";
+              echo "<p class ='alert alert-danger'>Phone number is invalid!</p>";
             }
             else if(strpos($websiteUrl, "error=messageIsTooShort&name")==true){
-              echo "<p class='error'>Message must be at least 100 characters long</p>";
+              echo "<p class='alert alert-danger'>Message must be at least 100 characters long</p>";
             }
             else if(strpos($websiteUrl,"error=noSubjectSelected&name")==true){
-              echo "<p class='error'>Must select a subject!</p>";
+              echo "<p class='alert alert-danger'>Must select a subject!</p>";
             }
             else if(strpos($websiteUrl, "success=messageSent")==true){
-              echo "<p class='success'>Your message was sent and is currently being reviewed by an admin.<br> We will contact you shortly!</p>";
+              echo "<p class='alert alert-success'>Your message was sent and is currently being reviewed by an admin.<br> We will contact you shortly!</p>";
             }
             ?>
 
       <input type="submit" name ="submit" class ="btn" value="Send your message"><br><br>
       <div id ="copyRight">
         &copy Copyright Expert Parking <?php echo date("Y");?> all rights reserved
-        
+
       </div>
     </form>
     </div>

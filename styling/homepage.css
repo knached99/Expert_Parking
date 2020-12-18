@@ -1,0 +1,309 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+#navHeading{
+  background-image: url("../assets/parkingLot.jpg"); /* IMAGE SOURCE WAS GOOGLE. Not original owner of this file*/
+  /* BMW vehicle is copyright of BMW */
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+#pageHeading {
+  font-family: Verdana;
+  font-size: 40px;
+  text-shadow: 1px 1px solid white;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  background-color: black;
+  background-size: 50px 25px;
+  height: 50vh;
+
+}
+
+
+.header{
+  font-family: trebuchet;
+  font-size: 30px;
+  text-shadow: 4px 4px solid black;
+  color: #fff;
+  font-weight: 700;
+  text-align: justify;
+  background-color: black;
+  line-height: 1.0;
+
+}
+
+ul {
+  float: left;
+  list-style-type: None;
+  margin-top: 25px;
+  font-weight: bolder;
+
+  width: 100%;
+}
+ul li{
+  display: inline-block;
+  color: #000;
+  text-shadow: 1px 0px #000;
+  font-style: italic;
+  font-weight: bolder;
+  font-weight: 700;
+}
+
+ul li a{
+  text-decoration: None;
+  color: #000;
+  padding: 5px 20px;
+  border: 1px solid transparent;
+  transition: 0.2s ease;
+  font-weight: 700;
+  font-size: 15px;
+
+}
+ul li a:hover{
+  border-bottom: 4px solid #fff;
+  color: #000;
+  text-decoration: none;
+}
+ul li.active a{
+  border-bottom: 4px solid lightblue;
+  color:#000;
+}
+.secondpage{
+  background-color: #000;
+  color: #fff;
+  line-height: 2.0;
+
+}
+
+.secondpage h1{
+  font-weight: 500;
+  position: relative;
+  left: 40%;
+  top: -300px;
+  font-style: normal;
+}
+.secondpage p{
+    font-weight: 500;
+    position: relative;
+    left: 10%;
+    top: -300px;
+    font-style: normal;
+  }
+}
+#myPic {
+  width: 10%;
+  height: auto;
+  border-radius: 50%;
+  image-orientation:
+  padding: 5px;
+  border: 1px solid white;
+  margin-left: auto;
+  margin-right: auto;
+  filter: grayscale(100%);
+  position: relative; left: 100px; top: 100px;
+
+
+}
+/* Position text in the middle of the page/image */
+#homepageText {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.1); /* Black w/opacity/see-through */
+  color: #fff;
+  font-size: 50px;
+  font-weight: 900;
+  border: None;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 50%;
+  padding: 20px;
+  text-align: center;
+  /*opacity: 0.7; */
+  opacity: none;
+}
+
+
+
+
+#copyRight{
+  transform: translate(-165%, 1100%);
+  color: white;
+  font-weight: bolder;
+  font-style: italic;
+  font-size: 12px;
+}
+/* Styling for the OUR TEAM section */
+#ourTeam img{
+  margin-top: -50px;
+}
+#ourTeam p{
+  font-weight: 500;
+  font-style: normal;
+  color: #fff;
+  font-weight: 500;
+
+
+}
+#ourTeam h3{
+  font-weight: 600;
+
+}
+
+#ourTeam h1{
+  font-weight: 700;
+  font-style: normal;
+}
+
+#ourTeam .card{
+  border-radius: 0;
+  box-shadow: 5px 5px 15px black;
+  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  color: #fff;
+  /*background-image: linear-gradient(#83a4d4, #b6fbff); */
+  background-image: linear-gradient(#0052d4, #4364f7, #6fb1fc);
+}
+
+#ourTeam .card:hover{
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 5px 5px 10px black;
+  background-image: linear-gradient(#D66D75, #E29587);
+  /*background-image: linear-gradient(#CB356B, #BD3F32); */
+
+}
+
+#ourTeam{
+  background-image: linear-gradient(#000, #000);
+  color: #fff;
+  height: 100vh;
+}
+
+#ourTeam .cardContainer{
+  position: relative;
+  left: 25%;
+}
+.ourPrices .cardBox1{
+  background-image: linear-gradient(#8E2DE2, #4A00E0);
+  color: #fff;
+  background-color: none;
+}
+
+.ourPrices .cardBox2{
+  background-image: linear-gradient(#00c6ff, #0072ff);
+  color: #fff;
+  background-color: none;
+}
+.ourPrices .cardBox3{
+  background-image: linear-gradient(#F00000, #DC281E);
+  color: #fff;
+  background-color: none;
+}
+
+.ourPrices .cardHeading{
+  font-weight: 700;
+  color: #2ea8ff;
+
+}
+.ourPrices .list{
+  line-height: 1.5;
+  text-shadow: none;
+}
+
+.ourPrices{
+  height: 100vh;
+  background-image: linear-gradient(#eb3349, #f45c43);
+  color: #fff;
+}
+
+.ourPrices .sectionHeading{
+  font-weight: 700;
+  font-style: italic  ;
+}
+.ourPrices .headingBio{
+  font-weight: 500;
+  font-style: italic;
+}
+
+.about-section{
+
+  background-size: 55%;
+  background-color: #fdfdfd;
+  overflow: hidden;
+  padding: 100px 0;
+  font-weight: 700;
+
+
+}
+
+.inner-container{
+  width: 55%;
+  float: right;
+  padding: 150px;
+  background-color: #fff;
+  background-image: url('../assets/4kTesla.jpg'); /* Tesla Vehicle is copyright of Tesla Inc.*/
+  background-repeat: repeat-y;
+  position: relative;
+  left: 5%;
+
+
+}
+
+.inner-container h2{
+  margin-bottom: 30px;
+  font-size: 40px;
+  font-weight: 900;
+  color: #fff;
+  border-left: 5px solid #ff2717;
+
+
+}
+
+.text{
+  font-size: 13px;
+  color: snow;
+  text-shadow: 1px 1px #000;
+  /*color: #545454; */
+  line-height: 40px;
+  text-align: justify;
+  margin-bottom: 40px;
+  word-wrap: break-word;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.2); /* Black w/opacity/see-through */
+}
+
+/* ADD RESPONSIVINESS BASED ON DEVICE SCREEN SIZE*/
+@media screen and(max-width: 1200px){
+  .inner-container{
+    padding: 80px;
+  }
+}
+
+@media screen and(max-width: 1000px){
+  .inner-section{
+    background-size: 100%;
+    padding: 100px 40px;
+  }
+}
+.inner-container{
+  width: 100%;
+}
+
+@media screen and(max-width: 600px){
+  .about-section{
+    padding: 0;
+  }
+  .inner-container{
+    padding: 60px;
+  }
+}

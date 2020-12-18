@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 // validate User's info
@@ -5,23 +6,94 @@ session_start();
 //['5'] license is invalid
 
 // Display USER INFORMATION USING SESSION
-require('dbHandler.php');
+require('backendLogic/dbHandler.php');
+
 $queryDb = 'SELECT * FROM newUsers WHERE email="'.$_SESSION["email"].'"';
 $queryResults = mysqli_query($connectToDb, $queryDb);
 if(mysqli_num_rows($queryResults)>0){
   // store the sessions in variables
-  if($row=mysqli_fetch_assoc($queryResults)){
+  while($row=mysqli_fetch_assoc($queryResults)){
 
 
-  $_SESSION['userId']=$row['userId'];
-  $_SESSION['email'] =$row['email'];
-  $_SESSION['phoneNum'] = $row['phoneNum'];
-  $_SESSION['username']=$row['username'];
-  $_SESSION['vehMake']=$row['vehMake'];
-  $_SESSION['vehModel']=$row['vehModel'];
-  $_SESSION['vehColor']=$row['vehColor'];
-  $_SESSION['vehYear']=$row['vehYear'];
-  $_SESSION['vehLicense']=$row['vehLicense'];
+  $userId= $_SESSION['userId']=$row['userId'];
+$email=  $_SESSION['email'] =$row['email'];
+$phoneNum=  $_SESSION['phoneNum'] =$row['phoneNum'];
+$username=  $_SESSION['username']=$row['username'];
+$vehMake=  $_SESSION['vehMake']=$row['vehMake'];
+$vehModel=  $_SESSION['vehModel']=$row['vehModel'];
+$vehColor =  $_SESSION['vehColor']=$row['vehColor'];
+$vehYear=  $_SESSION['vehYear']=$row['vehYear'];
+$vehLicense=  $_SESSION['vehLicense']=$row['vehLicense'];
+$startDate=  $_SESSION['startDate'] =$row['startDate'];
+$endDate=  $_SESSION['endDate'] = $row['endDate'];
+?>
+<!--USER PROFILE INFORMATION -->
+  <form>
+    <div class="container" style="width: 200%; position: relative; left: -200px;">
+      <legend style="font-weight: 700;">My Information</legend>
+  <div class="form-group">
+  <label for="username">Username</label>
+  <input type="text" class="form-control" id="username" aria-describedby="emailHelp" name="username" placeholder="<?php echo $username;?>">
+</div>
+<div class="form-group">
+  <label for="email">Email</label>
+  <input type="email" style="width:150%;"class="form-control" id="exampleInputPassword1" placeholder="<?php echo $email;?>">
+</div>
+<div class="form-group">
+  <label for ="phoneNum">Phonenumber</label>
+  <input type="tel" class="form-control" id="phoneNum" name="phoneNum" placeholder="<?php echo $phoneNum;?>">
+</div>
+<button type="button" class="btn btn-outline-success">Update</button>
+</div>
+</form>
+<form>
+  <!--VEHICLE INFORMATION -->
+  <div class="container" style="width: 200%; position: relative; left: 100px;">
+    <legend style="font-weight: 700;">My Vehicle</legend>
+<div class="form-group">
+<label for="vehMake">Make</label>
+<input type="text" class="form-control" id="vehMake" name="vehMake" placeholder="<?php if(isset($vehMake)){ echo $vehMake;} else{ echo 'No available data';}?>">
+</div>
+<div class="form-group">
+<label for="vehModel">Model</label>
+<input type="email" style="width:150%;"class="form-control" name="vehModel" id="vehModel" placeholder="<?php if(isset($vehMake)){ echo $vehMake;} else{ echo 'No available data';}?>">
+</div>
+<div class="form-group">
+<label for ="vehColor">Color</label>
+<input type="tel" class="form-control" id="vehColor" name="vehColor" placeholder="<?php if(isset($vehMake)){ echo $vehMake;} else{ echo 'No available data';}?>">
+</div>
+<div class="form-group">
+<label for ="vehYear">Year</label>
+<input type="tel" class="form-control" id="vehYear" name="vehYear" placeholder="<?php if(isset($vehMake)){ echo $vehMake;} else{ echo 'No available data';}?>">
+</div>
+<button type="button" class="btn btn-outline-success">Update</button>
+</div>
+</form>
+<?php
+  function calcEndDate($subscriptionEnd){
+    // calculate the end date for the subcription based on subscription type
+    // and grab the startDate from DB
+    // if the user is a monthly user
+    $server = 'localhost';
+    $user = 'root';
+    $password = 'root';
+    $dbName = 'userInfo';
+    $dbConnect = mysqli_connect($server, $user, $password, $dbName);
+    if(!$dbConnect){
+      die('Unable to contact the server'.mysqli_connect_errno().mysqli_connect_error());
+    }
+    // check if user is a monthly customer
+    if($dropDown =="1"){
+      $endDate = DATEADD(MONTH, 1, $startDate);
+      $insertQuery = "INSERT INTO subscribedUsers(endDate) VALUES(endDate)";
+      return $subscriptionEnd;
+    }
+    else if($dropDown =='2'){
+      $endDate = DATEADD(MONTH, 4, $startDate);
+      $insertQuery = 'INSERT INTO subscribedUsers(endDate) VALUES(endDate)';
+      return $subscriptionEnd;
+    }
+  }
 
 }
 }
@@ -58,56 +130,16 @@ if(isset($_POST['submitBtn2'])){
   <title>My Profile</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel ="stylesheet" type="text/css" href="myProfile.css">
+  <link rel ="stylesheet" type="text/css" href="styling/myProfile.css">
+  <link rel="stylesheet" href="font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
  </head>
  <body>
-
-<div class="updateCard">
-  <h2>Update my info</h2>
-  <form action ="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
-  <input type="text" name="email" class="inputField" value="<?php if(isset($_SESSION['email'])){echo $_SESSION['email'];}?>">
-  <span class="error"><?php echo $error; ?></span>
-  <input type="text" name="phoneNum" class="inputField"<?php if(isset($_SESSION['phoneNum'])){echo $_SESSION['phoneNum'];}?>>
-  <span class="error"><?php echo $error; ?></span>
-
-  <input type="text" name="username" class="inputField" value="<?php if(isset($_SESSION['username'])){echo $_SESSION['username'];}?>">
-  <span class="error"><?php echo $error; ?></span>
-
-  <input type="text" name="password" class="inputField" placeholder="Enter Password">
-  <span class="error"><?php echo $error; ?></span>
-
-  <input type="text" name="password2" class="inputField" placeholder="Repeat Password">
-  <span class="error"><?php echo $error; ?></span>
-<input type ="submit" class="submitButton" name = "submitBtn">
-<span><?php echo $success; ?></span>
-
-</form>
-
-</div>
-<hr><!--Creates a horizontal line -->
-<div class ="updateCard2">
-  <h2>My Vehicle</h2>
-  <form action ="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
-  <input type ="text" name="vehMake" class="inputField" placeholder="Make">
-  <span class="error"><?php echo $error; ?></span>
-
-  <input type ="text" name="vehModel" class="inputField" placeholder="Model">
-  <span class="error"><?php echo $error; ?></span>
-
-  <input type ="text" name="vehColor" class="inputField" placeholder="Color">
-  <span class="error"><?php echo $error; ?></span>
-
-  <input type ="text" name="vehYear" class="inputField" placeholder="Year">
-  <span class="error"><?php echo $error; ?></span>
-
-  <input type ="text" name="vehLicense" class="inputField" placeholder="License Plate">
-  <span class="error"><?php echo $error; ?></span>
-
-  <input type ="submit" name="submitBtn2" class="submitButton" value="update">
-  <span class ="success"><?php echo $success; ?></span>
-</form>
-</div>
-
-
+   <ul>
+     <li style="position: relative; left: -250px; top: 40px;">
+       <a href="userDashboard.php" class="btn btn-outline-danger"style="text-decoration: none;">Go back</a>
+     </li>
+ </ul>
  </body>
 </html>

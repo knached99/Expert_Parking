@@ -1,0 +1,152 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: None;
+  font-family: 'Josefin Sans', sans-serif;
+}
+body{
+  background-image: url(../assets/citySkyline.png)
+}
+.wrapper{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 350px;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 4px 4px 2px rgba(254, 236, 164, 1);
+
+}
+.wrapper .dropDown select{
+  font-weight: bolder;
+  background-color: blue;
+
+}
+::placeholder{
+  color: skyblue;
+  font-weight: thin;
+  font-size: 12px;
+}
+.wrapper h2{
+  text-align: center;
+
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #332902;
+  background-image: linear-gradient(#00c6ff, #0072ff );
+  padding: 10px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.wrapper select{
+  background-color: #050505;
+  color: #fff;
+
+}
+}
+.wrapper .input_field{
+  margin-bottom: 10px;
+  border-bottom-style: groove;
+  border-right-style: hidden;
+  border-top-style: hidden;
+  border-left-style: hidden;
+  padding-bottom: 30px;
+  padding-top: 30px;
+
+}
+.wrapper .input_field input[type = "text"], .wrapper textarea{
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+}
+
+.wrapper .input_field input[type ="tel"]{
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+}
+.wrapper input[type="textarea"]{
+  height: 80px;
+  width: 100%;
+  resize: None;
+}
+
+.wrapper .input_field input[type="text"]:focus,
+input[type = "tel"]:focus, input[type ="email"]:focus
+{
+  color: #34e5eb;
+  background-color: black;
+  font-weight: 650;
+}
+.wrapper .input_field input[type = "textarea"]:focus{
+  color: #03cdff;
+  background-color: black;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.wrapper .btn {
+  border: 0;
+  margin-top: 15px;
+  padding: 10px;
+  width: 100%;
+  background-color: #4287f5;
+  color: #e6d8d8;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight:bold;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.wrapper .btn:hover{
+    background-image: linear-gradient(#eb3349, #f45c43);
+  color: #fff;
+}
+ul {
+  float: left;
+  list-style-type: None;
+  margin-top: 25px;
+  font-weight: bolder;
+  color: white;
+}
+ul li{
+  display: inline-block;
+  color: white;
+
+}
+
+ul li a{
+  text-decoration: None;
+  color: white;
+  padding: 5px 20px;
+  border: 1px solid transparent;
+  transition: 0.2s ease;
+
+
+}
+ul li a:hover{
+  border-bottom: 4px solid #ff4747;
+  color: #fff;
+  text-decoration: none;
+}
+ul li.active a{
+  border-bottom: 4px solid #33ff66;
+  color: #fff;
+}
+
+#copyRight{
+  transform: translate(-0.1%, 100%);
+  color: #000;
+  font-weight: 650;
+  font-style: normal;
+  font-size: 10px;
+  font-family: Georgia;
+
+
+}
