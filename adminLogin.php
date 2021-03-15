@@ -1,86 +1,78 @@
-<?php
-session_start();
-require('backendLogic/dbHandler.php');
-?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link rel="stylesheet" type="text/css" href="styling/adminLogin.css">
-
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Admin Login</title>
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="styling/adminLogin.css">
+  <link rel="stylesheet" href="styling/adminLogin.scss">
 </head>
 <body>
-  <ul>
-    <li><a href="homePage.php">Go Home</a></li>
-  </ul>
-    <div id="login">
-        <div class="container">
-            <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" action="backendLogic/validateAdmin.php" method="post">
-                            <h3 class="text-center text-dark">Admin Login</h3>
-                            <?php if(isset($_GET['username'])){
-                              $username = $_GET['username'];
-                              echo '<div class="form-group">
-                                  <label for="username" class="text-dark">Username:</label><br>
-                                  <input type="text" name="username" id="username" class="form-control" value="'.$username.'">
-                              </div>';
-                            }
-                              else{
-                               echo '<div class="form-group">
-                                   <label for="username" class="text-dark">Username:</label><br>
-                                   <input type="text" name="username" id="username" class="form-control">
-                               </div>';
-                              }
-                              if(isset($_GET['passWord'])){
-                                $passWord = $_GET['password'];
-                                echo '<div class="form-group">
-                                    <label for="password" class="text-dark">Password:</label><br>
-                                    <input type="text" name="passWord" id="password" class="form-control" value="'.$passWord.'">
-                                </div>';
-                              }
-                              else{
-                                echo '<div class="form-group">
-                                    <label for="password" class="text-dark">Password:</label><br>
-                                    <input type="password" name="passWord" id="password" class="form-control">
-                                </div>';
-                              }
-                            ?>
+  <main>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6 login-section-wrapper">
+          <div class="brand-wrapper">
+            <img src="https://www.kindpng.com/picc/m/22-229918_night-club-logo-png-images-club-logo-png.png" alt="logo" class="logo">
+          </div>
+          <div class="login-wrapper my-auto">
+            <h1 class="login-title">Administrator Login</h1>
+            <form action="backendLogic/validateAdmin.php" method="POST">
+              <?php
+                          $websiteUrl = "http://$_SERVER[HTTP_POST]$_SERVER[REQUEST_URI]";
+                          if(strpos($websiteUrl, "error=emptyfields")==true){
+                            echo '<p class="alert alert-danger">You\'ve left both fields empty <i class="fa fa-exclamation-circle"></i></p>';
+                          }
 
-                              <div class="form-group">
-                                <input type="submit" name="submit" style="width: 100%;"class="btn btn-dark btn-md" value="submit">
-                            </div>
-                            <?php
-                            $websiteUrl = "http://$_SERVER[HTTP_POST]$_SERVER[REQUEST_URI]";
-                            if(strpos($websiteUrl, "error=emptyfields")==true){
-                              echo '<p class="alert alert-danger">All fields are required <i class="fa fa-warning"></i></p>';
-                            }
-                            else if(strpos($websiteUrl, "error=sqlerror")==true){
-                              echo '<p class="alert alert-danger">Error in SQL script <i class="fa fa-warning"></i></p>';
-                            }
+                          else if(strpos($websiteUrl, "passwordRequired")==TRUE){
+                            echo '<p class="alert alert-danger">You forgot to enter your password <i class="fa fa-exclamation-circle"></i></p>';
 
-                            else if(strpos($websiteUrl, "error=wrongpassword")){
-                              echo '<p class="alert alert-danger">Password is incorrect <i class="fa fa-times"></i></p>';
-                            }
-                            else if(strpos($websiteUrl, "error=nouser")){
-                              echo '<p class="alert alert-warning">User does not exist <i class="fa fa-warning"></i></p>';
-                            }
-                            else if(strpos($websiteUrl, 'message=loggedout')){
-                              echo '<p class="alert alert-success">Successfully Logged Out! <i class="fa fa-check"></i></p>';
-                            }
-                            else if(strpos($websiteUrl, 'sessionTimeout')){
-                              echo '<p class="alert alert-warning">You have been logged out due to inactivity <i class="fa fa-warning"></i></p>';
-                            }
+                          }
+                          else if(strpos($websiteUrl, "error=sqlerror")==true){
+                            echo '<p class="alert alert-danger">Error in SQL script <i class="fa fa-exclamation-circle"></i></p>';
+                          }
+
+                          else if(strpos($websiteUrl, "error=wrongpassword")){
+                            echo '<p class="alert alert-danger">Password is incorrect <i class="fa fa-exclamation-circle"></i></p>';
+                          }
+                          else if(strpos($websiteUrl, "error=nouser")){
+                            echo '<p class="alert alert-warning">User does not exist <i class="fa fa-exclamation-circle"></i></p>';
+                          }
+                          else if(strpos($websiteUrl, 'message=loggedout')){
+                            echo '<p class="alert alert-success">Successfully Logged Out! <i class="fa fa-check-circle"></i></p>';
+                          }
+                          else if(strpos($websiteUrl, 'session_timedout')){
+                            echo '<p class="alert alert-warning">You have been logged out due to inactivity <i class="fa fa-warning"></i></p>';
+                          }
 
 
-                            ?>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
+                          ?>
+              <div class="form-group">
+                <label for="email">Username</label>
+                <input type="text" name="username" id="username" class="form-control" placeholder="Enter your username">
+              </div>
+              <div class="form-group mb-4">
+                <label for="password">Password</label>
+                <input type="password" name="passWord" id="password" class="form-control" placeholder="enter your passsword">
+              </div>
+              <input id="login" class="btn btn-block login-btn" type="submit" name="submit"value="Login">
+            </form>
+            <a href="#!" class="forgot-password-link">Forgot password?</a>
+          </div>
         </div>
+        <div class="col-sm-6 px-0 d-none d-sm-block">
+          <img src="https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/8/shutterstock_199419065.jpg" alt="login image" class="login-img">
+        </div>
+      </div>
     </div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
+</html>

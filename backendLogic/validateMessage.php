@@ -1,40 +1,43 @@
 <?php
 if(isset($_POST['submit'])){
+  $userId = $_POST['userId'];
   $firstName = $_POST['firstName'];
   $lastName = $_POST['lastName'];
   $email = $_POST['email'];
   $phoneNum = $_POST['phoneNum'];
   $subject = $_POST['subject'];
   $message = $_POST['message'];
-  if(empty($firstName)||empty($lastName)||empty($email)||empty($phoneNum)||empty($subject)||empty($message)){
-    header('Location: ../contactAdmin.php?emptyfields');
+
+    if($subject == '0'){
+    header('Location: ../memberdashboard/contactAdmin.php?nosubject');
     exit();
   }
-  else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-    header('Location: ../contactAdmin.php?invalidEmail');
-    exit();
-  }
-  else if(preg_match("/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/", $phoneNum)){
-    header('Location: ../contactAdmin.php?invalidNumber');
-    exit();
-  }
-  else if($subject == 0){
-    header('Location: ../contactAdmin.php?nosubject');
-    exit();
-  }
-  else if(strlen((string)$message)<50){
-    header('Location: ../contactAdmin.php?messageLen');
+  else if(strlen((string)$message)<20){
+    header('Location: ../memberdashboard/contactAdmin.php?messageLen');
     exit();
 
 }
 else{
   require('dbHandler.php');
-$is_insert = $connectToDb->query("INSERT INTO messages('firstName','lastName','email','phoneNum','subject','message')VALUES('$firstName','$lastName','$email', '$message','$subject','$message')");
-if($is_insert == TRUE){
-  header('Location: ../contactAdmin.php?messagesent');
-  exit();
+  $query = "INSERT INTO cust_messages(firstName, lastName, email, phoneNum, subject, message, userId) VALUES(?,?,?,?,?,?,?)";
+  $stmt = mysqli_stmt_init($connectToDb);
+  if(!mysqli_stmt_prepare($stmt, $query)){
+    header('Location: ../memberdashboard/contactAdmin.php?sqlError');
+    exit();
+  }
+  else{
+    mysqli_stmt_bind_param($stmt, "ssssssi", $firstName, $lastName, $email, $phoneNum, $subject, $message,$userId);
+    mysqli_stmt_execute($stmt);
+    header('Location: ../memberdashboard/contactAdmin.php?messageSent');
+    exit();
+  }
+  }
+  mysqli_stmt_close($stmt);
+
+  mysqli_close($connectToDb);
 }
-}
+else{
+  pass;
 }
 
 ?>

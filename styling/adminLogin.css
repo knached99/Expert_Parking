@@ -1,55 +1,100 @@
 body {
-  margin: 0;
-  padding: 0;
-  background-image: url('../assets/parkedBmw.jpg');
-  background-repeat: no-repeat;
-  color: #fff;
-
-  height: 100vh;
-}
-#login .container #login-row #login-column #login-box {
-  margin-top: 120px;
-  max-width: 600px;
-  height: 320px;
-  border: 2px solid #9C9C9C;
+  font-family: "Karla", sans-serif;
   background-color: #fff;
-  opacity: 0.9;
-  font-weight: 700;
-}
-#login .container #login-row #login-column #login-box #login-form {
-  padding: 20px;
+  min-height: 100vh; }
 
-}
-#login .container #login-row #login-column #login-box #login-form #register-link {
-  margin-top: -85px;
-}
-ul {
-  position: relative;
-  left: 20px;
-  list-style-type: None;
-  margin-top: 25px;
-  font-weight: bolder;
+.brand-wrapper {
+  padding-top: 7px;
+  padding-bottom: 8px; }
+  .brand-wrapper .logo {
+    height: 25px; }
+
+.login-section-wrapper {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  padding: 68px 100px;
+  background-color: #fff; }
+  @media (max-width: 991px) {
+    .login-section-wrapper {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media (max-width: 575px) {
+    .login-section-wrapper {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      min-height: 100vh; } }
+
+.login-wrapper {
+  width: 300px;
+  max-width: 100%;
+  padding-top: 24px;
+  padding-bottom: 24px; }
+  @media (max-width: 575px) {
+    .login-wrapper {
+      width: 100%; } }
+  .login-wrapper label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #b0adad; }
+  .login-wrapper .form-control {
+    border: none;
+    border-bottom: 1px solid #e7e7e7;
+    border-radius: 0;
+    padding: 9px 5px;
+    min-height: 40px;
+    font-size: 18px;
+    font-weight: normal; }
+    .login-wrapper .form-control::-webkit-input-placeholder {
+      color: #b0adad; }
+    .login-wrapper .form-control::-moz-placeholder {
+      color: #b0adad; }
+    .login-wrapper .form-control:-ms-input-placeholder {
+      color: #b0adad; }
+    .login-wrapper .form-control::-ms-input-placeholder {
+      color: #b0adad; }
+    .login-wrapper .form-control::placeholder {
+      color: #b0adad; }
+  .login-wrapper .login-btn {
+    padding: 13px 20px;
+    background-color: #000;
+    border-radius: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 14px; }
+    .login-wrapper .login-btn:hover {
+      border: 1px solid #000;
+      background-color: #fff;
+      color: #000; }
+  .login-wrapper a.forgot-password-link {
+    color: #080808;
+    font-size: 14px;
+    text-decoration: underline;
+    display: inline-block;
+    margin-bottom: 54px; }
+    @media (max-width: 575px) {
+      .login-wrapper a.forgot-password-link {
+        margin-bottom: 16px; } }
+  .login-wrapper-footer-text {
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 0; }
+
+.login-title {
+  font-size: 30px;
   color: #000;
-  text-decoration: none;
-}
-ul li{
-  display: inline-block;
-  color: #000;
+  font-weight: bold;
+  margin-bottom: 25px; }
 
-}
+.login-img {
+  width: 100%;
+  height: 100vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: left;
+     object-position: left; }
 
-ul li a{
-  text-decoration: None;
-  color: #fff;
-  padding: 5px 20px;
-  transition: 0.2s ease;
-  background-color: #000;
-
-
-}
-ul li a:hover{
-  color: #fff;
-  background-color: #e86868;
-  border: none;
-  text-decoration: none;
-}
+/*# sourceMappingURL=login.css.map */

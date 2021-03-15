@@ -6,10 +6,18 @@ if(isset($_POST['login'])){
   $passWord = $_POST['passWord'];
 
 // check if the fields are empty
-  if(empty($email) || empty($passWord)){
+  if(empty($email) && empty($passWord)){
     header('Location: ../login.php?error=emptyfields');
     exit();
   }
+  else if(!empty($email) && empty($passWord)){
+    header('Location: ../login.php?passwordRequired');
+    exit();
+  }
+  else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    header('Location: ../login.php?invalidEmail');
+    exit();
+    }
   else{
     $query = 'SELECT * FROM newUsers WHERE email=?';
     // initialize the prepared statement
@@ -34,10 +42,14 @@ if(isset($_POST['login'])){
       // fetch data from the result and place results in an ASSOCIATIVE ARRAY
       // which is the format that can be worked with in PHP
       if($row = mysqli_fetch_assoc($results)){
+        $verified = $row['verified'];
+        if($verified == 1){
+
+
         // grab the password from the user, hash it and see if it matches with the pwd that the user tried to login with
         $checkPwd = password_verify($passWord, $row['passWord']);
         if($checkPwd == false){
-          header('Location: ../login.php?error=wrongpassword&email='.$email.'');
+          header('Location: ../login.php?error=wrongpassword');
           exit();
         }
         else if($checkPwd == true){
@@ -46,8 +58,9 @@ if(isset($_POST['login'])){
           // IF IT IS THEN GO TO ADMIN PAGE, OTHERWISE START SESSION AS CUSTOMER USER
           session_start(); // start a session to remember the user on the SERVER
           $_SESSION['email']=$row['email'];
-          header('Location: ../userDashboard.php?success=userLoggedin');
+          header('Location: ../memberdashboard/memberDash2.php?success=userLoggedin');
           exit();
+
         }
         else{
           // if the user entered a password that is not a string
@@ -55,6 +68,10 @@ if(isset($_POST['login'])){
           exit();
         }
       }
+      else{
+        header('Location: ../login.php?acctNotValid');
+      }
+    }
       else{
         // if no results were matched in the DB
         header('Location: ../login.php?error=nouser');

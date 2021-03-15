@@ -5,8 +5,13 @@ if(isset($_POST['submit'])){
   $passWord = $_POST['passWord'];
   $pwdHash = password_hash($passWord, PASSWORD_DEFAULT);
 // check if the fields are empty
-  if(empty($email) && empty($passWord)){
+  if(empty($username) && empty($passWord)){
     header('Location: ../adminLogin.php?error=emptyfields');
+    exit();
+  }
+
+  else if(!empty($username) && empty($passWord)){
+    header('Location: ../adminLogin.php?passwordRequired');
     exit();
   }
   else{
@@ -47,7 +52,7 @@ if(isset($_POST['submit'])){
           // IF IT IS THEN GO TO ADMIN PAGE, OTHERWISE START SESSION AS CUSTOMER USER
           session_start(); // start a session to remember the user on the SERVER
           $_SESSION['username']=$row['username'];
-          header('Location: ../admindashboard/index.php');
+          header('Location: ../admindashboard2/template/adminDash2.php');
           exit();
         }
         else{

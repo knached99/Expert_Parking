@@ -1,58 +1,50 @@
 <?php
-if(isset($_POST['submit'])){
-require('dbHandler.php');
-
-// Write the auotmated mail script here
-
-
-// GET THE FORM DATA USING THE $_POST METHOD
-
-  $name = $_POST['name'];
-  $subject = $_POST['subject'];
-  $phone = $_POST['phoneNum'];
+if(isset($_POST['sendMessage'])){
+  require('dbHandler.php');
+  $fullName = $_POST['fullName'];
   $email = $_POST['email'];
-  $message =$_POST['message'];
-  // phone number length
-  //$mailTo = "khalednached@gmail.com"; // won't work in local server
-  $phoneNumLength = strlen((string)$phone!=10);
+  $phoneNum = $_POST['phoneNum'];
+  $message = $_POST['message'];
+  $phonePattern = '/^(\({1}\d{3}\){1}|\d{3})(\s|-|.)\d{3}(\s|-|.)\d{4}$/';
 
-  $noChars = preg_replace("/[^0-9]/",'',$phone);
-
-  // if fields are empty send user back to the form
-  if(empty($name) && empty($phone) && empty($email) && empty($message))
-  {
-    header('Location: ../contactUs.php?error=emptyfields&name='.$name.'&subject='.$subject.'&phone='.$phone.'&email='.$email.'&message='.$message);
+  if(empty($fullName) || empty($email) || empty($phoneNum)){
+    header('Location: ../homepage.php?emptyfields');
     exit();
   }
-  //Validate user's email using PHP's built in function
-  else if(!filter_var($email, FILTER_VALIDATE_EMAIL))
-  {
-header('Location: ../contactUs.php?error=invalidemail&name='.$name.'&subject='.$subject.'&phone='.$phone.'&message='.$message);
+  else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    header('Location: ../homepage.php?invalidEmail');
     exit();
   }
-  else if(!preg_match('/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/', $_POST['phoneNum']) && !$phoneNumLength &&!$noChars){
-    header('Location: ../contactUs.php?error=invalidPhoneNum&name='.$name.'&email='.$email.'&subject='.$subject.'&message='.$message);
-  }
-  else if(strlen((string)$message)<100){
-    header('Location: ../contactUs.php?error=messageIsTooShort&name='.$name.'&email='.$email.'&phoneNum='.$phoneNum.'&subject='.$subject);
+  else if(!preg_match($phonePattern, $phoneNum)){
+    header('Location: ../homepage.php?invalidNum');
     exit();
   }
-  else if($subject =='0'){
-    header('Location: ../contactUs.php?error=noSubjectSelected&name='.$name.'&email='.$email.'&phone='.$phone.'&message='.$message);
-  }
-  else{
-    // if everything is valid
-
-    //header('Location: contactUs.php?success=messageSent');
-    // SEND THE DATA TO THE MESSAGES TABLE
-    require('dbHandler.php');
-    $query = 'INSERT INTO messages(full_name, email, phoneNum, subject, message) VALUES("$name", "$email", "$phone", "$subject", "$message")';
-    header('Location: ../contactUs.php?success=messageSent');
+  else if(strlen((string)$message)<20){
+    header('Location: ../homepage.php?messageLen');
     exit();
 
 }
- }
- else{
-   pass;
- }
+else{
+  require('dbHandler.php');
+  $query = "INSERT INTO messages(fullName, email, phoneNum, message) VALUES(?,?,?,?)";
+  $stmt = mysqli_stmt_init($connectToDb);
+  if(!mysqli_stmt_prepare($stmt, $query)){
+    header('Location: ../homepage.php?sqlError');
+    exit();
+  }
+  else{
+    mysqli_stmt_bind_param($stmt, "ssss", $fullName, $email, $phoneNum, $message);
+    mysqli_stmt_execute($stmt);
+    header('Location: ../homePage.php?messageSent');
+    exit();
+  }
+  }
+  mysqli_stmt_close($stmt);
+
+  mysqli_close($connectToDb);
+}
+else{
+  pass;
+}
+
 ?>

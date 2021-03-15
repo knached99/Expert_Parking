@@ -1,43 +1,5 @@
-.headerSection h2{
-  font-weight: 650;
-  font-family: Georgia;
-  font-size: 20px;
-  text-align: center;
-  text-shadow: 1px 1px lightblue;
-  width: auto;
-  text-decoration: none;
-  color: #fff;
-
-}
-body{
-  background-color: #000;
-}
-ul {
-  position: relative;
-  left: 20px;
-  list-style-type: None;
-  margin-top: 25px;
-  font-weight: bolder;
-  color: #fff;
-}
-ul li{
-  display: inline-block;
-  color: #fff;
-
-}
-
-ul li a{
-  text-decoration: None;
-  color: #fff;
-  padding: 5px 20px;
-  border: 1px solid transparent;
-  transition: 0.2s ease;
-  background-color: #14ff5b;
-
-
-}
-ul li a:hover{
-  color: #fff;
-  background-color: #e86868;
-  text-decoration: none;
+body {
+    background: grey;
+    margin-top: 120px;
+    margin-bottom: 120px;
 }

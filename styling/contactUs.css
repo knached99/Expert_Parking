@@ -84,7 +84,7 @@ input[type = "tel"]:focus, input[type ="email"]:focus
   background-color: black;
   font-weight: 650;
 }
-.wrapper .input_field input[type = "textarea"]:focus{
+.wrapper textarea:focus{
   color: #03cdff;
   background-color: black;
   font-weight: 400;
