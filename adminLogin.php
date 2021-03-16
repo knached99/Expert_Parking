@@ -62,7 +62,7 @@
               </div>
               <input id="login" class="btn btn-block login-btn" type="submit" name="submit"value="Login">
             </form>
-            <a href="#!" class="forgot-password-link">Forgot password?</a>
+            <a href="reset_password.php" class="forgot-password-link">Forgot password?</a>
           </div>
         </div>
         <div class="col-sm-6 px-0 d-none d-sm-block">
